@@ -1,0 +1,73 @@
+<div id="contents" class="container" role="main"> 
+  <div class="image">
+    <% if @product.image_file_size.nil?%>
+      <%=image_tag("noimage_bg.jpg")%>
+    <%else%>
+      <script type="text/javascript">
+        $(".image").css('height','600px');
+      </script>
+      <%=image_tag("/public/images/products/"+@product.id.to_s+"/"+@product.id.to_s+"_original.jpg", alt:"")%>
+    <%end%>
+  </div>
+  <div class="info_block">
+    <div class="info">
+      <div class="publisher">
+        <%=@product.publisher %>
+      </div>
+      <div class="detail">
+        <ul>
+          <h3><li><%=@product.title%></li></h3>
+          <li>
+          <div class="category">
+            설명
+          </div>
+          <div class="sub_detail">
+            <%=@product.description%>
+          </div>
+          </li>
+          <li>
+          <div class="category">
+            경품
+          </div>
+          <div class="sub_detail">
+          <%=@product.gift%>
+          </div>
+          </li>
+          <li>
+          <div class="category">
+           종료일자
+          </div>
+          <div class="sub_detail">
+            <%=@product.end_date%>
+          </div>
+          </li>
+        </ul>
+      </div>
+      <div class="counts">
+        <div class="views_count zzim_count">
+          <span class="number">
+            <%=@zzimCnt%>
+          </span>
+          <span class="txt">zzim</span>
+        </div>
+        <div class="views_count">
+          <span class="number">
+            <%=@product.hits%>
+          </span>
+          <span class="txt">views</span>
+        </div>
+      </div>
+    </div>
+      <%= link_to "참여하기", @product.link, :class => 'btn btn-large outlink btn_area' ,:target=>'_blank' %>
+      <input type="hidden" id="product_id" name="product_id" value="<%=@product.id%>"/>
+      <%if !current_user.nil? %>
+        <input type="hidden" id="user_id" name="user_id" value="<%=@user.id%>"/>
+      <%end%>
+      <%if !@userProduct.nil? %>
+        <%= link_to "찜 안할래요", "#none", :class => 'btn btn-large not-zzim btn_area'%>
+      <input type="hidden" id="user_product_id" name="user_product_id" value="<%=@userProduct.id%>"/>
+    <%else%>
+        <span class="btn btn-large zzim btn_area">찜하기</span>
+    <%end%>
+  </div>
+</div>

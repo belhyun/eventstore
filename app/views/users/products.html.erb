@@ -1,0 +1,45 @@
+<div class="column-container">
+  <div class="content">
+    <ul class="events_list zzim_list">
+        <%@userProducts.each do |userProduct| %>
+          <%if userProduct.product.nil?%>
+            <%next%>
+          <%end%>
+          <li>
+              <div class="info">
+                <%if userProduct.product.image_file_size.nil?%>
+                  <%=image_tag("/assets/noimage_small_bg.jpg")%>
+              <%else%>
+                  <%=image_tag("/public/images/products/"+userProduct.product.id.to_s+"/"+userProduct.product.id.to_s+"_original.jpg", alt:"")%>
+              <%end%>
+
+                <div class="extra">
+                  <div class="end_date">
+                    <span class="extra_top">마감일</span>
+                      <%if  ProductsHelper.getExpireDays(userProduct.product.end_date) == '0' %>
+                        <span class="extra_body">D-day</span>
+                      <%else%>
+                        <span class="extra_body">D-<%=ProductsHelper.getExpireDays(userProduct.product.end_date)%></span>
+                      <%end%>
+                  </div>
+                  <div class="counts">
+                    <span class="extra_top">조회수</span>
+                    <span class="extra_body"><%=userProduct.product.hits%></span>
+                  </div>
+                </div>
+                <div class="product_info">
+                  <div class="publisher"><%=userProduct.product.publisher%></div>
+                    <%= link_to(userProduct.product) do %>
+                      <span class="title"><%=userProduct.product.title%></span>
+                    <% end %>
+                  경품: <span class="gift"><%=userProduct.product.gift%></span>
+                </div>
+              </div>
+          </li>
+        <%end%>
+    </ul>
+    <div class="paginate">
+      <%= paginate @userProducts %>
+    </div>
+  </div>
+</div>

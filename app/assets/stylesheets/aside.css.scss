@@ -1,0 +1,74 @@
+div.column-container div.aside{
+  float:left;
+  position: relative;
+  left: 320px;
+  width: 350px;
+  margin-top: 4px;
+  background: #ffffff;
+}
+
+.go_top{
+  position:fixed;
+  top: 0px;
+}
+
+div.column-container div.aside h4{
+  height: 20px;
+  padding: 14px 10px 6px 10px;
+  border: 1px solid #dddde1;
+  border-bottom: none;
+  margin-bottom: 0;
+  margin-top: 0;
+  //background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+  //z-index:2;
+  background-color: #f9f9f9;
+  color: #fa2020;
+  text-align: center;
+}
+
+div.column-container div.aside ul li{
+  //padding: 10px;
+  font-size: 14px;
+  margin:0;
+}
+
+
+div.column-container div.aside .events{
+  border: 1px solid #b3b3b3;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: 1px solid #dddde1;
+  background-color: #f9f9f9;
+}
+
+div.column-container div.aside .events li{
+  border-bottom: 1px solid #dddde1;
+}
+
+div.column-container div.aside .events li:nth-child(even){
+  padding:10px;
+  background-image: url('ranking_bg1.png');
+  background-repeat: repeat-x;
+}
+
+div.column-container div.aside .events li:nth-child(odd){
+  padding: 10px 10px 2px 10px;
+  background-image: url('ranking_bg2.png');
+  background-repeat: repeat-x;
+}
+
+div.column-container div.aside .events li .rank{
+  color: #fa2020;
+  font-size: 16px;
+}
+
+@media screen and (max-width: 480px){
+
+  div.column-container div.aside{
+    clear:both;
+    float:left;
+    left:auto;
+    width: 99%;
+  }
+}

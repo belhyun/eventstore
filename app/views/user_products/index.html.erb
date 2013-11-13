@@ -1,0 +1,29 @@
+<h1>Listing user_products</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Prodcut</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user_products.each do |user_product| %>
+      <tr>
+        <td><%= user_product.user_id %></td>
+        <td><%= user_product.prodcut_id %></td>
+        <td><%= link_to 'Show', user_product %></td>
+        <td><%= link_to 'Edit', edit_user_product_path(user_product) %></td>
+        <td><%= link_to 'Destroy', user_product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User product', new_user_product_path %>

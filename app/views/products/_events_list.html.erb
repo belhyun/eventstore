@@ -1,0 +1,34 @@
+<li>
+<div class="rank"><span><%=index+1%><span></div>
+<div class="info">
+  <div class="goods_image">
+  <%if product.image_file_size.nil?%>
+      <%=image_tag("noimage_small_bg.jpg")%>
+  <%else%>
+      <%=image_tag("/public/images/products/"+product.id.to_s+"/"+product.id.to_s+"_original.jpg", alt:"")%>
+  <%end%>
+  </div>
+  <div class="extra">
+    <div class="end_date">
+      <span class="extra_top">마감일</span>
+      <%if product.expire_days == '0' %>
+        <span class="extra_body">D-day<span>
+      <%else%>
+        <span class="extra_body">D-<%=product.expire_days%><span>
+      <%end%>
+    </div>
+    <div class="counts">
+      <span class="extra_top">조회수</span>
+      <span class="extra_body"><%=product.hits%></span>
+    </div>
+    </div>
+    <div class="product_info">
+    <div class="publisher"><%=product.publisher %></div>
+    <%= link_to(product) do %>
+    <span class="title"><%=product.title%></span>
+  <% end %>
+      경품: <span class="gift"><%=product.gift%></span>
+  </div>
+  </div>
+</li>
+

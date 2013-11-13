@@ -1,0 +1,28 @@
+<div class="navbar navbar-fixed-top top-nav">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/">
+        <% if !mobile_device? %>
+          <%= image_tag("logo_bg.png") %>
+        <%else%>
+          <%= image_tag("logo1_bg.png") %>
+        <% end %>
+      </a>
+      <div class="nav-collapse">
+        <ul class="nav pull-right">
+          <%if current_user %>
+            <li><%= link_to "로그아웃", signout_path %></li>
+            <li><%= link_to "찜보기", :controller => 'users', :action => 'products', :id => current_user %></li>
+          <%else%>
+            <li><%= link_to "로그인", "/auth/facebook" %></li>
+          <%end%>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+div.column-container .content .zzim_list{
+  width:50%;
+  margin:10px auto;
+}
+.column-container .content .paginate{
+  overflow: hidden;
+  display:block;
+  width:50%;
+  margin:0 auto;
+}
+
+.column-container .content .paginate .pagination{
+  float:none;
+}
+
+@media screen and (max-width: 480px){
+  div.column-container .content .zzim_list{
+    width:100%;
+  }
+
+  .column-container .content .paginate{
+    width:100%;
+  }
+}

@@ -1,0 +1,32 @@
+#contents #products .table-striped{
+  //border-top :none;
+}
+
+#contents .table thead th{
+  text-align: center;
+}
+
+.btn-group .dropdown-menu li:not(:first-child){
+  border-top: 2px solid;
+}
+
+#contents .pagination{
+  text-align: center;
+}
+
+#contents .pagination ul{
+  display: inline-block;
+  zoom:1;
+  *display: inline;
+}
+
+#contents .pagination ul li{
+  float: left;
+}
+
+
+@media screen and (max-width: 480px) {
+  #contents .pagination{
+    margin: 20px 5px;
+  }
+}

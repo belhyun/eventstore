@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>이벤트스토어</title>
+<%= stylesheet_link_tag    "application", media: "all"%>
+<%= javascript_include_tag "application", @js_controller %>
+<%= javascript_include_tag "application", "#{@js_controller}_#{@js_action}"%>
+<%= csrf_meta_tags %>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body class="show_products" data-twttr-rendered="true">
+  <%= render partial: "layouts/nav_top"%>
+  <%= yield %>
+</div>
+<%= render partial: "layouts/footer" %>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<div class="column-container">
+  <div class="content">
+    <ul class="events_list">
+      <%@products.each_with_index do |product,index| %>
+        <%= render partial: "events_list", :locals => {:product => product, :index => index} %>
+    <% end %>
+    </ul>
+    <div class="view_load">
+      <a href="#" class="more_load">더 보기</a>
+      <a href="#" class="top">맨 위로</a>
+    </div>
+  </div>
+  <%= render partial: "aside" %>
+</div>

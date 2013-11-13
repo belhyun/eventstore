@@ -1,0 +1,230 @@
+.title_box{
+  border: 1px solid #dddde1;
+  height: 37px;
+  background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+  z-index:2;
+}
+
+#contents .column-container{
+  padding-right: 320px;
+  overflow: hidden;
+}
+
+div.column-container div.content{
+  float:left;
+  width: 100%;
+  margin-right: -350px;
+}
+
+div.column-container .content .events_list{
+  list-style: none;
+  margin-top: 5px;
+  background: #ffffff;
+  //padding: 13px 13px 20px 14px;
+  border: 1px solid #dddde1;
+  margin-right: 50px;
+}
+
+div.column-container .content .events_list .rank{
+  position: relative;
+  float: left;
+  width: 32px;
+  background-color:#f9f9f9;
+  color:#fa2020;
+  height: 100%;
+}
+
+div.column-container .content .events_list .rank span{
+  display: block;
+  margin: 45px 0 0 11px;
+}
+
+.round-line{
+  border-radius: 5px 5px 5px 5px;
+  -webkit-box-shadow: 1px 1px 1px #d8d8d8;
+  -webkit-border-radius: 5px;
+}
+
+div.column-container .content ul{
+  margin: 0;
+}
+
+div.column-container .content .events_list li{
+  border-bottom: 1px solid #dddde1;
+  overflow: hidden;
+  background-color: #f9f9f9;
+}
+
+div.column-container .content .events_list li:nth-child(1){
+}
+
+div.column-container .content .events_list li:last-child{
+  border-bottom: none;
+}
+
+div.column-container .content .events_list li img{
+  width: 80px;
+  height: 80px;
+  display: block;
+  float: left;
+  border-bottom: none;
+  border-top: none;
+}
+
+div.column-container .content .events_list li .title{
+  display: block;
+  color: #fa2020;
+}
+
+div.column-container .content .events_list li .product_info{
+  margin: 0 0 0 100px;
+  //float:left;
+  overflow: hidden;
+}
+
+div.column-container .content .events_list li .extra .counts{
+  float:right;
+  border: 1px solid;
+  height:70%;
+  margin-left: 10px;
+  height:100%;
+  border: 1px solid #dddde1;
+}
+
+div.column-container .content .events_list li .extra .extra_top{
+  padding: 5px;
+  background-color:#f9f9f9;
+  height:30%;
+  display:block;
+  text-align: center;
+}
+
+div.column-container .content .events_list li .extra .extra_body{
+  display:block;
+  font-size:18px;
+  color:#fa2020;
+  text-align: center;
+  margin-top:19%;
+  padding:3px;
+}
+
+div.column-container .content .events_list li .extra .end_date{
+  float:left;
+  border: 1px solid;
+  height:100%;
+  border: 1px solid #dddde1;
+}
+
+div.column-container .content .events_list li .gift{
+  display:inline-block;
+  margin-top: 5px;
+}
+
+div.column-container .content .events_list li .extra{
+  float: right;
+  font-size: 11px;
+  color: #7c7c7c;
+  height: 80px;
+}
+
+div.column-container .content .events_list li .info{
+  overflow: hidden;
+  padding:15px;
+  background-color: #ffffff;
+}
+
+div.column-container .content .events_list li .product_info .publisher{
+  font-size: 11px;
+  margin-bottom: 5px;
+  padding: 0;
+  color: #7c7c7c;
+}
+
+div.column-container .content .view_load{
+  background-color: #fa7070;
+  width:100%;
+  overflow:hidden;
+  height:50px;
+  width:94%;
+}
+
+div.column-container .content .group_view_top{
+  //width:94.5%;
+}
+
+div.column-container .content .group_view_top a{
+  display:block;
+  margin-left: 50%;
+  margin-top: 15px;
+}
+
+div.column-container .content .view_load a{
+  color:#ffffff;
+  margin-top:15px;
+}
+
+div.column-container .content .view_load .more_load{
+  float:left;
+  margin-left:50%;
+}
+
+div.column-container .content .view_load .top{
+  float:right;
+}
+
+@media screen and (max-width: 480px){
+  #contents .column-container{
+    padding-right:0px;
+  }
+  div.column-container div.content{
+    margin-right:0;
+  }
+  #contents .column-container{
+    //margin-left:2px;
+  }
+  div.column-container .content .events_list{
+    margin-right:0;
+  }
+  div.column-container .content .events_list .rank{
+  }
+  div.column-container .content .events_list .rank span{
+    //margin-top:90px;
+  }
+  div.column-container .content .events_list li .product_info{
+    float:none;
+    margin-top:0px;
+    padding:0 10px 10px 10px;
+  }
+  div.column-container .content .events_list li .extra{
+    display: inline-block;
+    margin-left: -80px;
+    margin-top: 90px;
+    float:left;
+  }
+
+  div.column-container .content .events_list li .extra .counts{
+    margin-left:2px;
+  }
+
+  div.column-container .content .events_list li .extra{
+    height:50px;
+  }
+  div.column-container .content .events_list li .extra .extra_body{
+    margin-top:2%;
+    padding:3px;
+  }
+  div.column-container .content .view_load{
+    width:100%;
+  }
+  div.column-container .content .view_load .more_load{
+    margin-left:45%;
+  }
+
+  div.column-container .content .group_view_top{
+    width:100%;
+  }
+
+  div.column-container .content .group_view_top a{
+    margin-left:45%;
+  }
+}

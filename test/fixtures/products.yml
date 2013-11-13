@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  publisher: MyString
+  title: MyText
+  join_method: MyString
+  detail_link: MyText
+  category: MyString
+
+two:
+  publisher: MyString
+  title: MyText
+  join_method: MyString
+  detail_link: MyText
+  category: MyString

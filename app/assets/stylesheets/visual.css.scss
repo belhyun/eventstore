@@ -1,0 +1,25 @@
+#contents .visual{
+  position: relative;
+  width: auto;
+  height:auto;
+  //padding-left: 435px;
+  margin-bottom: 30px;
+  margin-top: 20px;
+  //padding-top: 45px;
+  border: 1px solid #dfdfdf;
+  background: #fff;
+}
+
+#contents .visual_image{
+  position: relative;
+  width: auto; 
+  margin: 1%;
+}
+
+@media screen and (max-width: 480px){
+  #contents .visual{
+    //padding-left: 10px;
+    //margin-left:10px;
+    //margin-right:10px;
+  }
+}

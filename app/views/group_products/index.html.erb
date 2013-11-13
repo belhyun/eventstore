@@ -1,0 +1,29 @@
+<h1>Listing group_products</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Group</th>
+      <th>Product</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @group_products.each do |group_product| %>
+      <tr>
+        <td><%= group_product.group_id %></td>
+        <td><%= group_product.product_id %></td>
+        <td><%= link_to 'Show', group_product %></td>
+        <td><%= link_to 'Edit', edit_group_product_path(group_product) %></td>
+        <td><%= link_to 'Destroy', group_product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Group product', new_group_product_path %>
