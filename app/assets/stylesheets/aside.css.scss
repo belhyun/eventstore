@@ -1,9 +1,10 @@
 div.column-container div.aside{
-  float:left;
+  float:right;
   position: relative;
-  left: 320px;
-  width: 350px;
-  margin-top: 4px;
+  //left: 320px;
+  //width: 350px;
+  width: 40%;
+  //margin-top: 4px;
   background: #ffffff;
 }
 
@@ -70,5 +71,11 @@ div.column-container div.aside .events li .rank{
     float:left;
     left:auto;
     width: 99%;
+  }
+}
+@media screen and (max-width 1024px){
+
+  div.column-container div.aside{
+    left: 370px;
   }
 }

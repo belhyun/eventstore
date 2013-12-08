@@ -9,10 +9,13 @@
 
 .content .popular_events_list > ul > li{
   //float:left;
-  margin-top: 15px;
-  width: 800px;
+  //margin-top: 15px;
+  //width: 800px;
+  width:100%;
 }
-
+.content .popular_events_list > ul > li:nth-child(n+2){
+  margin-top: 15px;
+}
 /*
 .content .popular_events_list > ul > li:nth-child(even){
   float:right;
@@ -52,7 +55,7 @@
   display:block;
   text-align: center;
   margin:3px 0 3px 5px;
-  width: 10%;
+  width: 20%;
   height: 58px;
   background-image: url("count_bg.png");
   background-repeat: no-repeat;

@@ -3,7 +3,7 @@ namespace :create do
   task :run_all do 
     Rake::Task["create:epass"].invoke
     Rake::Task["create:gift_auto"].invoke
-    Rake::Task["create:facebook"].invoke
+    #Rake::Task["create:facebook"].invoke
     Rake::Task["create:eventbook"].invoke
     Rake::Task["create:remove"].invoke
   end

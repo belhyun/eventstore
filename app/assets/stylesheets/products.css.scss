@@ -6,13 +6,14 @@
 }
 
 #contents .column-container{
-  padding-right: 320px;
+  //padding-right: 320px;
   overflow: hidden;
 }
 
 div.column-container div.content{
   float:left;
-  width: 100%;
+  //width: 100%;
+  width: 58%;
   margin-right: -350px;
 }
 
@@ -178,6 +179,7 @@ div.column-container .content .view_load .top{
   }
   div.column-container div.content{
     margin-right:0;
+    width:100%;
   }
   #contents .column-container{
     //margin-left:2px;
