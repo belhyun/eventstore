@@ -55,7 +55,7 @@
   display:block;
   text-align: center;
   margin:3px 0 3px 5px;
-  width: 20%;
+  width: 80px;
   height: 58px;
   background-image: url("count_bg.png");
   background-repeat: no-repeat;
@@ -70,7 +70,7 @@
 
 .content .popular_events_list .products_title .view_text{
   margin-top: 2px;
-  font-size: 5px;
+  font-size: 15px;
   color: #636363;
 }
 
@@ -124,7 +124,6 @@
 .content .popular_events_list .events .goods_image{
 }
 
-
 @media screen and (max-width: 480px){
   .content .popular_events_list{
   }
@@ -155,9 +154,6 @@
   }
   .content .popular_events_list .products_title .counts{
     margin-top:2%;
-    width:20%;
-  }
-  .content .popular_events_list .products_title .view_text{
-    font-size: 10px;
+    //width:20%;
   }
 }

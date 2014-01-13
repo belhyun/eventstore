@@ -6,7 +6,7 @@ class Product < ActiveRecord::Base
   has_many :groups, through: :group_products
   has_many :group_products
   attr_protected
-  attr_accessor :image_url, :image, :expire_days, :score
+  attr_accessor :image_url, :image, :expire_days
   geocoded_by :place
   after_validation :geocode
   has_attached_file :image, :styles => { :xlarge => "180x180#", :large => "130x130#", :medium => "104x104#", :small => "45x45#" },
@@ -17,20 +17,20 @@ class Product < ActiveRecord::Base
   scope :urgent, lambda {Product.select('products.*,datediff(products.end_date, now()) as expire_days').where("end_date >= SUBDATE(NOW(),1)").order("end_date asc")}
   scope :total , lambda {Product.where("end_date >= SUBDATE(NOW(),1)").order('id DESC')}
   def reg_rank_table
-=begin
-    score = score
-    diffDays = (((end_date.to_time - Time.zone.now)/1.day)+2).to_i
-    if diffDays < 0
-      score += -999999
-    elsif diffDays == 0
-      score += 100
-    elsif diffDays >= 50
-      score += 0
-    else
-      score += 100 - (diffDays/5+1)*10
-    end
-=end
     Product.addScoreToProduct(id,score)
+  end
+
+  def score=(score)
+    @total = 0
+    score.scan(/\d+\(\d+\)/).each do |score|
+      /(\d+)\((\d)\)/.match(score){|m|
+        @total += m[1].to_i * m[2].to_i
+      }
+    end
+  end
+
+  def score
+    @total
   end
 
   def self.products
@@ -53,45 +53,6 @@ class Product < ActiveRecord::Base
     def io.original_filename; base_uri.path.split('/').last; end
     io.original_filename.blank? ? nil : io
   rescue # catch url errors with validations instead of exceptions (Errno::ENOENT, OpenURI::HTTPError, etc...)
-  end
-
-  def self.recommendProducts(user_id)
-    users = User.find(:all)
-    productIds = Array.new
-    currentUserProducts = Array.new
-    userProducts = Hash.new
-    currentUser = User.find_by_id(user_id)
-
-    users.each do |user|
-      $redis.smembers(ProductsHelper.redis_key(user.id, 'PRODUCTS')).each do |id|
-        if !currentUser.nil? && user.id == currentUser.id
-          currentUserProducts << id
-        else
-          productIds << id
-        end
-      end
-      if !currentUser.nil? && user.id != currentUser.id
-        userProducts[user.id] = productIds
-      end
-    end
-    resemblance = Hash.new
-    userProducts.each  do |userId, userProduct|
-      intersection = userProduct & currentUserProducts
-      union = userProduct | currentUserProducts
-      resemblance[userId] = intersection.count.to_f / union.count
-    end
-    resemblance.values.sort.reverse    
-    resultProducts = Array.new
-    resemblance.each do |userId, userProduct|
-      userProducts = userProducts[userId]
-      userProducts.each do |product|
-        if resultProducts.count <= 10
-          resultProducts << product
-        end
-      end
-    end
-    products = Product.where('id in (:ids)',:ids => resultProducts)
-    products
   end
 
   def expire_days
@@ -127,6 +88,7 @@ class Product < ActiveRecord::Base
     Product.where("end_date < CURDATE()").each do  |product|
       $redis.zrem(Rails.application.config.rank_key, product.id)
     end
+    GroupProduct.removeExpireProducts
   end
 
   def self.updateHits(id)

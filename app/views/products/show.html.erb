@@ -3,10 +3,7 @@
     <% if @product.image_file_size.nil?%>
       <%=image_tag("noimage_bg.jpg")%>
     <%else%>
-      <script type="text/javascript">
-        $(".image").css('height','600px');
-      </script>
-      <%=image_tag("/public/images/products/"+@product.id.to_s+"/"+@product.id.to_s+"_original.jpg", alt:"")%>
+      <%=image_tag("/images/products/"+@product.id.to_s+"/"+@product.id.to_s+"_original.jpg", alt:"")%>
     <%end%>
   </div>
   <div class="info_block">
@@ -16,13 +13,13 @@
       </div>
       <div class="detail">
         <ul>
-          <h3><li><%=@product.title%></li></h3>
+          <h3><li><%=@product.title.to_s.gsub(/\r\n/,"<br/>").html_safe%></li></h3>
           <li>
           <div class="category">
             설명
           </div>
           <div class="sub_detail">
-            <%=@product.description%>
+            <%=@product.description.to_s.gsub(/\r\n/,"<br/>").html_safe%>
           </div>
           </li>
           <li>
@@ -30,7 +27,7 @@
             경품
           </div>
           <div class="sub_detail">
-          <%=@product.gift%>
+            <%=@product.gift.to_s.gsub(/\r\n/,"<br/>").html_safe%>
           </div>
           </li>
           <li>

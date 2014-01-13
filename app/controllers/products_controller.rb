@@ -51,7 +51,7 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     Product.updateHits(params[:id])
-    Product.addScoreToProduct(@product.id, 3)
+    Product.addScoreToProduct(@product.id, 100)
     @zzimCnt = UserProduct.getZzimCnt(params[:id])
     if !current_user.nil?
       @userProduct = UserProduct.where(:user_id => current_user.id, :product_id => params[:id]).first

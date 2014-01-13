@@ -21,7 +21,7 @@ class Group < ActiveRecord::Base
       end
     end
     products.each do |product|
-      GroupProduct.create(
+      GroupProduct.find_or_create_by(
         :group_id => id,
         :product_id =>product.id
       )

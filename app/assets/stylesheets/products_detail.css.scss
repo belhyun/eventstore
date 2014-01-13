@@ -14,7 +14,7 @@ body.show_products #contents div.image{
   float: left;
   width: 40%;
   height:558px;
-  padding: 20px;
+  //padding: 20px;
 }
 
 body.show_products #contents div.image img{
@@ -148,11 +148,12 @@ body.show_products #contents .info_block .not-zzim{
   width: 200px;
 }
 
-@media screen and (max-width: 480px){
+@media screen and (max-width: 1170px){
+
   body.show_products #contents div.image{
     float:none;
-    width:90%;
-    height:200px
+    width:100%;
+    height:400px;
   }
 
   body.show_products #contents div.info_block{

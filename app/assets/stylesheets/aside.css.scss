@@ -54,9 +54,9 @@ div.column-container div.aside .events li:nth-child(even){
 }
 
 div.column-container div.aside .events li:nth-child(odd){
-  padding: 10px 10px 2px 10px;
+  padding:10px;
   background-image: url('ranking_bg2.png');
-  background-repeat: repeat-x;
+  //background-repeat: repeat-x;
 }
 
 div.column-container div.aside .events li .rank{

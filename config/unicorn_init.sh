@@ -4,10 +4,12 @@ set -e
 # since nginx and unicorn accept the same signals
 
 # Feel free to change any of the following variables for your app:
+source /usr/local/rvm/environments/ruby-2.0.0-p247
 TIMEOUT=${TIMEOUT-60}
 APP_ROOT=/home/www/rails_app/eventmoayo
 PID=$APP_ROOT/tmp/pids/unicorn.pid
-CMD="$APP_ROOT/bin/unicorn -c $APP_ROOT/config/unicorn.rb -D -E production"
+#CMD="$APP_ROOT/bin/unicorn -c $APP_ROOT/config/unicorn.rb -D -E production"
+CMD="/usr/local/rvm/gems/ruby-2.0.0-p247/bin/unicorn -c $APP_ROOT/config/unicorn.rb -D -E production"
 #INIT_CONF=$APP_ROOT/config/init.conf
 action="$1"
 set -u

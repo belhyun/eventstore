@@ -12,15 +12,15 @@ $(window).scroll(function(){
     return;
   } 
   if(!flag_g && (isEmpty(type)|| type == 'group')){
-    page = 2;
+    page = 10;
     gTotalCnt = 0;
     flag_g = true;
     flag_u = false;
     flag_r = false;
   }
-  var v = parseInt(gTotalCnt/2)+1;
-  if(gTotalCnt % 2 == 0){
-    v = parseInt(gTotalCnt/2);
+  var v = parseInt(gTotalCnt/10)+1;
+  if(gTotalCnt % 10 == 0){
+    v = parseInt(gTotalCnt/10);
   }
   if(gTotalCnt != 0 && v  == page-1){
     return;

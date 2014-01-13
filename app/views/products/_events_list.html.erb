@@ -5,7 +5,7 @@
   <%if product.image_file_size.nil?%>
       <%=image_tag("noimage_small_bg.jpg")%>
   <%else%>
-      <%=image_tag("/public/images/products/"+product.id.to_s+"/"+product.id.to_s+"_original.jpg", alt:"")%>
+      <%=image_tag("/images/products/"+product.id.to_s+"/"+product.id.to_s+"_original.jpg", alt:"")%>
   <%end%>
   </div>
   <div class="extra">

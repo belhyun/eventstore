@@ -33,11 +33,6 @@ class GroupProduct < ActiveRecord::Base
           groupProduct.delete
         end
       end
-=begin
-      if (((Time.zone.now - groupProduct.product.end_date.to_time)/1.day)-1).to_i.abs.to_s == 0
-        groupProduct.delete
-      end
-=end
     end
   end
 end
