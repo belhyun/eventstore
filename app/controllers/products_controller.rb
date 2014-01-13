@@ -120,7 +120,7 @@ class ProductsController < ApplicationController
     end
 
     def set_popular_product
-      @rankProducts = Kaminari.paginate_array(Product.popularProducts).page(params[:page]).per(10)
+      @rankProducts = Kaminari.paginate_array(Product.popularProducts).page(params[:page]).per(30)
     end
 
     def set_user

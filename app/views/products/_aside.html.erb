@@ -1,7 +1,7 @@
 <div class="aside">
   <h4>실시간랭킹</h4>
   <ul class="events">
-    <%@rankProducts[0..10].each_with_index do |product,index| %>
+    <%@rankProducts[0..30].each_with_index do |product,index| %>
     <li>
       <span class="rank"><%=index+1%></span>
       <%= link_to(product) do %>
