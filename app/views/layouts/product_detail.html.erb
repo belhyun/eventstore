@@ -2,20 +2,21 @@
 <html>
 <head>
 <title>이벤트스토어</title>
-<% render partial: "layouts/ad" %>
 <%= favicon_link_tag 'noimage_small_bg.jpg', type: 'image/jpeg'%>
 <%= stylesheet_link_tag    "application", media: "all"%>
 <%= javascript_include_tag "application", @js_controller %>
 <%= javascript_include_tag "application", "#{@js_controller}_#{@js_action}"%>
-<script type="text/javascript" src="http://adimg3.search.naver.net/mobilejs/mobilead_min.js"></script>
+<% if mobile_device? %>
+  <script type="text/javascript" src="http://adimg3.search.naver.net/mobilejs/mobilead_min.js"></script>
+<% end %>
 <%= csrf_meta_tags %>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body class="show_products" data-twttr-rendered="true">
   <% if mobile_device? %>
     <div id="nbpmobilead_div"></div>
+    <%= render partial: "layouts/ad" %>
   <% end %>
-  <%= render partial: "layouts/ad" %>
   <%= render partial: "layouts/nav_top"%>
   <%= yield %>
 </div>
