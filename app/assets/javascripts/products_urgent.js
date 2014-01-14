@@ -38,7 +38,7 @@ $(document).on('click', '.more_load', function(event){
         var target = items[i-1];
         if(target != null){
           if(target.image_file_size != null){
-            data.image = "http://eventstore.co.kr/public/images/products/"+target.id+"/"+target.id+"_original.jpg";
+            data.image = "http://eventstore.co.kr/images/products/"+target.id+"/"+target.id+"_medium.jpg";
           }else{
             data.image = "http://eventstore.co.kr/assets/noimage_small_bg.jpg";
           }

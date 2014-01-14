@@ -55,7 +55,7 @@ $(document).on('click', '.more_load', function(event){
             productData.title = products[j].title;
             productData.publisher = products[j].publisher;
             if(products[j].image_file_size != null){
-              productData.image = "http://eventstore.co.kr/public/images/products/"+products[j].id+"/"+products[j].id+"_original.jpg";
+              productData.image = "http://eventstore.co.kr/public/images/products/"+products[j].id+"/"+products[j].id+"_medium.jpg";
             }else{
               productData.image = "http://eventstore.co.kr/assets/noimage_small_bg.jpg";
             }
