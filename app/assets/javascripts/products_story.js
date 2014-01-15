@@ -3,7 +3,7 @@ var totalCnt = 0;
 $(document).on('click', '.more_load', function(event){
   event.preventDefault();
   var v = parseInt(totalCnt/2)+1;
-  if(totalCnt != 0 && v  == page){
+  if(totalCnt != 0 && v  == page-1){
     $('.more_load').text("끝입니다.");
     return;
   } 
@@ -55,7 +55,7 @@ $(document).on('click', '.more_load', function(event){
             productData.title = products[j].title;
             productData.publisher = products[j].publisher;
             if(products[j].image_file_size != null){
-              productData.image = "http://eventstore.co.kr/public/images/products/"+products[j].id+"/"+products[j].id+"_medium.jpg";
+              productData.image = "http://eventstore.co.kr/images/products/"+products[j].id+"/"+products[j].id+"_medium.jpg";
             }else{
               productData.image = "http://eventstore.co.kr/assets/noimage_small_bg.jpg";
             }
