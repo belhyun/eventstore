@@ -3,7 +3,9 @@
     <% if @product.image_file_size.nil?%>
       <%=image_tag("noimage_bg.jpg")%>
     <%else%>
-      <%=image_tag("/images/products/"+@product.id.to_s+"/"+@product.id.to_s+"_original.jpg", alt:"")%>
+      <%#link_to "My superb link",:href=>"http://eventstore.co.kr/images/products/77980/77980_original.jpg", :data => { :colorbox => true } do%>
+        <%=image_tag("/images/products/"+@product.id.to_s+"/"+@product.id.to_s+"_original.jpg", alt:"")%>
+      <%#end%>
     <%end%>
   </div>
   <div class="info_block">

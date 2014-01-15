@@ -10,7 +10,7 @@
                 <%if userProduct.product.image_file_size.nil?%>
                   <%=image_tag("/assets/noimage_small_bg.jpg")%>
               <%else%>
-                  <%=image_tag("/public/images/products/"+userProduct.product.id.to_s+"/"+userProduct.product.id.to_s+"_original.jpg", alt:"")%>
+                  <%=image_tag("/images/products/"+userProduct.product.id.to_s+"/"+userProduct.product.id.to_s+"_original.jpg", alt:"")%>
               <%end%>
 
                 <div class="extra">

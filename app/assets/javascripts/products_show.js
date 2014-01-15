@@ -3,8 +3,10 @@ $(function(){
     var productId = $(this).parent().find("#product_id").val();
     var userId = $(this).parent().find("#user_id").val();
     if(userId == null){
-      alert("로그인이 필요한 서비스입니다.");
-      return;
+      if(confirm("로그인 하시겠습니까?")){
+        location.href = "/auth/facebook";
+        return;
+      }
     }
     $.ajax({
       type: "POST",

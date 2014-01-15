@@ -11,12 +11,10 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
 //= require twitter/bootstrap
-//= require bootstrap-select
 //= require underscore
-//= require jquery.facebox
 //= require layout
 //= require nav_top
 //= require pagination
 //= require active_admin/base
+//= require colorbox-rails

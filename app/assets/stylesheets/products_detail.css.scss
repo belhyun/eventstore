@@ -151,9 +151,10 @@ body.show_products #contents .info_block .not-zzim{
 @media screen and (max-width: 1170px){
 
   body.show_products #contents div.image{
+    position:relative;
     float:none;
     width:100%;
-    height:400px;
+    height:auto;
   }
 
   body.show_products #contents div.info_block{
