@@ -5,10 +5,10 @@ class Product < ActiveRecord::Base
   has_many :user_products
   has_many :groups, through: :group_products
   has_many :group_products
+  has_many :categories, through: :product_categories
+  has_many :product_categories
   attr_protected
   attr_accessor :image_url, :image, :expire_days
-  geocoded_by :place
-  after_validation :geocode
   has_attached_file :image, :styles => { :xlarge => "180x180#", :large => "130x130#", :medium => "104x104#", :small => "45x45#" },
     :url => "/images/products/:id/:id_:style.jpg"
   before_validation :download_remote_image, :if => :image_url_provided?

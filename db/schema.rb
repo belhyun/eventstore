@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130928140301) do
+ActiveRecord::Schema.define(version: 20140117052815) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -46,12 +46,25 @@ ActiveRecord::Schema.define(version: 20130928140301) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "enterprises", force: true do |t|
-    t.string   "title"
-    t.text     "desc"
+  create_table "categories", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "title"
+    t.text     "description"
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
   end
+
+  add_index "categories", ["email"], name: "index_categories_on_email", unique: true, using: :btree
+  add_index "categories", ["reset_password_token"], name: "index_categories_on_reset_password_token", unique: true, using: :btree
 
   create_table "group_products", force: true do |t|
     t.integer  "group_id"
@@ -67,8 +80,11 @@ ActiveRecord::Schema.define(version: 20130928140301) do
     t.datetime "updated_at"
   end
 
-  create_table "mypeople", force: true do |t|
-    t.string "buddy_id"
+  create_table "product_categories", force: true do |t|
+    t.integer  "product_id"
+    t.integer  "category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "products", force: true do |t|
@@ -80,36 +96,18 @@ ActiveRecord::Schema.define(version: 20130928140301) do
     t.datetime "updated_at"
     t.date     "start_date"
     t.date     "end_date"
-    t.integer  "ex_id",              limit: 8
-    t.integer  "enterprise_id"
     t.text     "gift"
     t.text     "gift_type"
     t.string   "max_cnt"
-    t.text     "place"
-    t.string   "announce"
-    t.float    "latitude"
-    t.float    "longitude"
-    t.text     "desc"
+    t.text     "description"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.text     "image_url"
     t.date     "reg_date"
-    t.integer  "hits",                         default: 0
+    t.integer  "hits",               default: 0
   end
-
-  create_table "punches", force: true do |t|
-    t.integer  "punchable_id",                          null: false
-    t.string   "punchable_type", limit: 20,             null: false
-    t.datetime "starts_at",                             null: false
-    t.datetime "ends_at",                               null: false
-    t.datetime "average_time",                          null: false
-    t.integer  "hits",                      default: 1, null: false
-  end
-
-  add_index "punches", ["average_time"], name: "index_punches_on_average_time", using: :btree
-  add_index "punches", ["punchable_type", "punchable_id"], name: "punchable_index", using: :btree
 
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"

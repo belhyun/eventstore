@@ -1,6 +1,11 @@
 FactoryGirl.define do
-  factory :product do
-    score "1000000(1), 20000(5)"
-    sequence(:id)
+  factory :category do
+    title 'test'
+    description 'this is category test'
+  end
+
+  factory :Product_category do
+    product_id 77990
+    category_id 7
   end
 end

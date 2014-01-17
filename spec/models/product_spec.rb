@@ -7,6 +7,6 @@ describe Product do
 
   it "multi line to br tag" do
     text = "a\nb\n"
-    p text.gsub(/\n/,"<br/>")
+    text.gsub(/\n/,"<br/>")
   end
 end

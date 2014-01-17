@@ -33,4 +33,11 @@ Eventmoayo::Application.configure do
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
+  Paperclip.options[:command_path] = "/usr/bin/"
+
+  config.facebookid = '503029133125134'
+  config.facebooksecret = '59f3c163044b21ec5bed838434ca7988'
+  config.rank_key = 'PRODUCTS_RANKING'
+  config.middleware.delete Rack::Lock
+  config.host = "eventstore.co.kr"
 end

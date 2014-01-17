@@ -1,8 +1,8 @@
 Eventmoayo::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  resources :group_products
 
+  resources :group_products
   resources :groups
 
   get "session/new"
@@ -20,8 +20,6 @@ Eventmoayo::Application.routes.draw do
   resources :user_products
 
   #resources :mypeople
-
-  resources :enterprises
 
   resources :products do
     collection do
