@@ -16,5 +16,4 @@
 //= require layout
 //= require pagination
 //= require active_admin/base
-//= require colorbox-rails
 //= require common

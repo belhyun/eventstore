@@ -7,6 +7,7 @@
         location.href = "/auth/facebook";
         return;
       }
+      return;
     }
     $.ajax({
       type: "POST",

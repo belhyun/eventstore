@@ -69,8 +69,6 @@ gem 'underscore-rails'
 gem 'activeadmin', github: 'gregbell/active_admin', branch: 'rails4'
 gem 'acts-as-taggable-on'
 gem 'facebox-rails'
-gem 'colorbox-rails'
-
 group :development, :test do
     gem 'rspec-rails', '~> 3.0.0.beta'
 end

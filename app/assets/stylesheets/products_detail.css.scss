@@ -11,10 +11,10 @@
 }
 
 body.show_products #contents div.image{
-  float: left;
-  width: 40%;
-  height:558px;
-  //padding: 20px;
+  position:relative;
+  float:none;
+  width:100%;
+  height:auto;
 }
 
 body.show_products #contents div.image img{
@@ -28,8 +28,8 @@ body.show_products #contents div.image #map{
 }
 
 body.show_products #contents div.info_block{
-  width:56.55%;
-  float:right;
+  position:relative;
+  width:100%;
   height: 100%;
 }
 
@@ -122,30 +122,29 @@ body.show_products #contents div.info .counts .views_count .txt{
   margin-top: 10%;
 }
 
+.link_box{
+  display:inline-block;
+  background-image: none;
+  width:200px;
+  color: #ffffff;
+}
 
 body.show_products #contents .info_block .outlink{
+  @extend .link_box;
   background-color: #2fb6bc;
-  background-image: none;
-  color: #ffffff;
-  margin-right: 25px;
-  width:200px;
-  margin-left: 10%;
+  margin:50px 0 50px 26%;
 }
 
 body.show_products #contents .info_block .zzim{
+  @extend .link_box;
   background-color: #ff444f;
-  background-image: none;
-  color: #ffffff;
-  margin-right: -13px;
-  width: 200px;
+  margin: 50px 0 50px 5%;
 }
 
 body.show_products #contents .info_block .not-zzim{
+  @extend .link_box;
   background-color: #3366FF;
-  background-image: none;
-  color: #ffffff;
-  margin-right: -13px;
-  width: 200px;
+  margin: 50px 0 50px 5%;
 }
 
 @media screen and (max-width: 1170px){
