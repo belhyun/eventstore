@@ -1,4 +1,4 @@
-$(function(){
+(function($_){
   $(document).on('click', '.zzim', function(){
     var productId = $(this).parent().find("#product_id").val();
     var userId = $(this).parent().find("#user_id").val();
@@ -50,4 +50,4 @@ $(function(){
       }
     })
   })
-});
+}).call(this, window);

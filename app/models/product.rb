@@ -16,6 +16,8 @@ class Product < ActiveRecord::Base
   after_update :reg_rank_table
   scope :urgent, lambda {Product.select('products.*,datediff(products.end_date, now()) as expire_days').where("end_date >= SUBDATE(NOW(),1)").order("end_date asc")}
   scope :total , lambda {Product.where("end_date >= SUBDATE(NOW(),1)").order('id DESC')}
+  scope :recent , Proc.new {Product.where("created_at >= SUBDATE(NOW(),1)").order('id DESC')}
+
   def reg_rank_table
     Product.addScoreToProduct(id,score)
   end
@@ -62,7 +64,7 @@ class Product < ActiveRecord::Base
   def self.popularProducts
     rankProducts = $redis.zrevrange(Rails.application.config.rank_key, 0 ,-1).reverse
     products = Product.select('products.*,datediff(products.end_date, now()) as expire_days')
-    .where("products.id in (:ids)",:ids =>rankProducts)
+    .where("products.id in (:ids) and products.end_date >= now()",:ids =>rankProducts)
     products = products.sort_by do |element|
       rankProducts.index(element.id.to_s)
     end

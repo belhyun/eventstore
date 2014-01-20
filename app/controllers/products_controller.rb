@@ -1,8 +1,8 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :set_user
-  before_action :set_popular_product, only: [:story, :rank, :urgent]
-  before_action :set_type, only: [:story, :rank, :urgent]
+  before_action :set_popular_product, only: [:story, :rank, :urgent, :recent]
+  before_action :set_type, only: [:story, :rank, :urgent, :recent]
   layout "product_detail" , :only => :show
   protect_from_forgery :except => :create
 
@@ -40,6 +40,19 @@ class ProductsController < ApplicationController
     @products = Kaminari.paginate_array(totalProducts).page(params[:page]).per(10)
     result = Hash.new
     result['total_cnt'] = totalProducts.count
+    result['products'] = @products
+    respond_to do |format|
+      format.html 
+      format.json { render json: result.to_json}
+    end
+  end
+
+  def recent
+    totalProducts = Product.total
+    recent = Product.recent
+    @products = Kaminari.paginate_array(recent).page(params[:page]).per(10)
+    result = Hash.new
+    result['total_cnt'] = recent.count
     result['products'] = @products
     respond_to do |format|
       format.html 

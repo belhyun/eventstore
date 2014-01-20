@@ -14,7 +14,7 @@
 //= require twitter/bootstrap
 //= require underscore
 //= require layout
-//= require nav_top
 //= require pagination
 //= require active_admin/base
 //= require colorbox-rails
+//= require common

@@ -28,6 +28,7 @@ Eventmoayo::Application.routes.draw do
       get 'rank'
       get 'urgent'
       get 'story'
+      get 'recent'
     end
   end
 
