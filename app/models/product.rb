@@ -16,7 +16,7 @@ class Product < ActiveRecord::Base
   after_update :reg_rank_table
   scope :urgent, lambda {Product.select('products.*,datediff(products.end_date, now()) as expire_days').where("end_date >= SUBDATE(NOW(),1)").order("end_date asc")}
   scope :total , lambda {Product.where("end_date >= SUBDATE(NOW(),1)").order('id DESC')}
-  scope :recent , Proc.new {Product.where("created_at >= SUBDATE(NOW(),1)").order('id DESC')}
+  scope :recent , Proc.new {Product.where("created_at >= SUBDATE(NOW(),2)").order('id DESC')}
 
   def reg_rank_table
     Product.addScoreToProduct(id,score)

@@ -4,9 +4,7 @@
 <title>이벤트스토어</title>
 <%= favicon_link_tag 'noimage_small_bg.jpg', type: 'image/jpeg'%>
 <%= stylesheet_link_tag    "application", media: "all"%>
-<% if @js_controller == 'products' %>
-  <%= javascript_include_tag "application", "#{@js_controller}_#{@js_action}"%>
-<% end %>
+<%= javascript_include_tag "application", "#{@js_controller}_#{@js_action}"%>
 <% if mobile_device? %>
   <script type="text/javascript" src="http://adimg3.search.naver.net/mobilejs/mobilead_min.js"></script>
 <% end %>
@@ -19,7 +17,17 @@
     <%= render partial: "layouts/ad" %>
   <% end %>
   <%= render partial: "layouts/nav_top"%>
+  <% if !mobile_device? %>
+    <div id="left-banner">
+      <%= render partial: "layouts/left_side_banner" %>
+    </div>
+  <% end %>
   <%= yield %>
+  <% if !mobile_device? %>
+    <div id="right-banner">
+      <%= render partial: "layouts/right_side_banner" %>
+    </div>
+  <% end %>
 </div>
 <%= render partial: "layouts/footer" %>
 </body>
