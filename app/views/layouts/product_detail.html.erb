@@ -12,22 +12,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body class="show_products" data-twttr-rendered="true">
-  <% if mobile_device? %>
-    <div id="nbpmobilead_div"></div>
-    <%= render partial: "layouts/ad" %>
-  <% end %>
   <%= render partial: "layouts/nav_top"%>
-  <% if !mobile_device? %>
-    <div id="left-banner">
-      <%= render partial: "layouts/left_side_banner" %>
-    </div>
-  <% end %>
   <%= yield %>
-  <% if !mobile_device? %>
-    <div id="right-banner">
-      <%= render partial: "layouts/right_side_banner" %>
-    </div>
-  <% end %>
 </div>
 <%= render partial: "layouts/footer" %>
 </body>

@@ -182,6 +182,20 @@ width: 400px;
     -webkit-border-radius: 5px;
   }
 
+  div.column-container div.content{
+    float:left;
+    width:58%;
+    margin-right:-350px;
+  }
+
+  div.column-container{
+    #my-zzim{
+      float:none;
+      width:100%;
+      margin-right:0;
+    }
+  }
+
   div.column-container .content {
     ul {
       margin: 0;
