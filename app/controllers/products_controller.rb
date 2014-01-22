@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :set_user
   before_action :set_popular_product, only: [:story, :rank, :urgent, :recent]
+  before_action :set_categories, only: [:story, :rank, :urgent, :recent]
   before_action :set_type, only: [:story, :rank, :urgent, :recent]
   layout "product_detail" , :only => :show
   protect_from_forgery :except => :create
@@ -148,5 +149,9 @@ class ProductsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
       params[:product]
+    end
+
+    def set_categories
+      @categories = Category.all
     end
 end

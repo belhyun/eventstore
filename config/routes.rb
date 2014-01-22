@@ -18,6 +18,7 @@ Eventmoayo::Application.routes.draw do
   end
 
   resources :user_products
+  resources :categories
 
   #resources :mypeople
 

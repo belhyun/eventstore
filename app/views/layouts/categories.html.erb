@@ -20,8 +20,6 @@
   <%= render partial: "layouts/top_slide" %>
   <div id="contents" class="container">
     <%= render partial: "layouts/visual" %>
-    <%= render partial: "layouts/categories" %>
-    <%= render partial: "layouts/product_type", locals: {type: @type}%>
     <%= yield %>
   </div>
   <%= render partial: "layouts/footer" %>

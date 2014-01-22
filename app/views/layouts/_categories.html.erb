@@ -1,0 +1,15 @@
+<div id="category">
+  <div class="category-inner">
+    <ul>
+      <%@categories.each do |category|%>
+        <li>
+          <%= link_to (category) do%>
+            <span>
+              <%=category.title%>
+            </span>
+          <%end%>
+        </li>
+      <%end%>
+    </ul>
+  </div>
+</div>

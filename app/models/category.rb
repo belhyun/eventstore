@@ -4,4 +4,5 @@ class Category < ActiveRecord::Base
   attr_protected
   validates_uniqueness_of :title
   validates_presence_of :title, :description
+  scope :products, Proc.new {|id| Category.find(id).products}
 end

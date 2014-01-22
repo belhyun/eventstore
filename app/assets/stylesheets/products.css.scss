@@ -148,10 +148,12 @@ width: 400px;
     z-index: 2;
   }
 
-  #contents .column-container {
-    //padding-right: 320px;
-    overflow: hidden;
+  #contents{
+    .column-container {
+      overflow: hidden;
+    }
   }
+
 
   div.column-container {
     .content .events_list {
@@ -534,7 +536,6 @@ width: 400px;
         &.image {
           position: relative;
           float: none;
-          width: 100%;
           height: auto;
         }
         &.info_block {

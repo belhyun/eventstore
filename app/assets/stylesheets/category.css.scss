@@ -1,0 +1,30 @@
+#contents{
+  div#category{
+    margin: 0 0 20px 0;
+    overflow:hidden;
+
+    .category-inner{
+      ul{
+        margin:0;
+        li{
+          list-style:none;
+          float:left;
+          font-weight:bold;
+          font-size:12px;
+          margin: 0 5px 10px 0;
+
+          a{
+            span{
+              border: 1px solid #535353;
+              box-shadow: 0 1px 3px #838383;
+              color:#fff;
+              background-color:#454d5f;
+              display:block;
+              padding:5px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
