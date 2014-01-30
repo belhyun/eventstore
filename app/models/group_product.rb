@@ -28,11 +28,7 @@ class GroupProduct < ActiveRecord::Base
   def self.removeExpireProducts
     groupProducts = GroupProduct.all
     groupProducts.each do |groupProduct|
-      unless groupProduct.product.nil?
-        if (((Time.zone.now - groupProduct.product.end_date.to_time)/1.day)-1).to_i.abs.to_s == 0
-          groupProduct.delete
-        end
-      end
+      groupProduct.delete if !groupProduct.product.nil? && groupProduct.product.end_date.to_time < Time.zone.now
     end
   end
 end

@@ -2,11 +2,11 @@ require 'open-uri'
 class Product < ActiveRecord::Base
   include ProductsHelper
   has_many :users, through: :user_products
-  has_many :user_products
+  has_many :user_products, dependent: :destroy
   has_many :groups, through: :group_products
-  has_many :group_products
+  has_many :group_products, dependent: :destroy
   has_many :categories, through: :product_categories
-  has_many :product_categories
+  has_many :product_categories, dependent: :destroy
   attr_protected
   attr_accessor :image_url, :image, :expire_days
   has_attached_file :image, :styles => { :xlarge => "180x180#", :large => "130x130#", :medium => "104x104#", :small => "45x45#" },
@@ -14,9 +14,10 @@ class Product < ActiveRecord::Base
   before_validation :download_remote_image, :if => :image_url_provided?
   after_create :reg_rank_table
   after_update :reg_rank_table
-  scope :urgent, lambda {Product.select('products.*,datediff(products.end_date, now()) as expire_days').where("end_date >= SUBDATE(NOW(),1)").order("end_date asc")}
+  scope :select_with_expire_days , Proc.new{ Product.select('products.*, datediff(products.end_date, now()) as expire_days')}
+  scope :urgent, lambda {Product.select_with_expire_days.where("end_date >= SUBDATE(NOW(),1)").order("end_date asc")}
   scope :total , lambda {Product.where("end_date >= SUBDATE(NOW(),1)").order('id DESC')}
-  scope :recent , Proc.new {Product.where("created_at >= SUBDATE(NOW(),2)").order('id DESC')}
+  scope :recent , Proc.new {Product.select_with_expire_days.where("created_at >= SUBDATE(NOW(),2)").order('id DESC')}
 
   def reg_rank_table
     Product.addScoreToProduct(id,score)
@@ -88,9 +89,12 @@ class Product < ActiveRecord::Base
 
   def self.removeExpireProducts
     Product.where("end_date < CURDATE()").each do  |product|
-      $redis.zrem(Rails.application.config.rank_key, product.id)
+      if product.delete
+        $redis.zrem(Rails.application.config.rank_key, product.id)
+        exec("rm -rf #{File.absolute_path(Rails.root)}/public/images/products/#{product.id}")
+      end
     end
-    GroupProduct.removeExpireProducts
+    #GroupProduct.removeExpireProducts
   end
 
   def self.updateHits(id)

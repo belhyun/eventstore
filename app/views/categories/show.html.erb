@@ -1,1 +1,21 @@
-<h1>준비중입니다!</h1>
+<div class="column-container">
+  <section id="category-products">
+    <span class="main-title"><h4><%=@category.title%></h4></span>
+    <div class="products">
+      <ul>
+        <%@products.each do |product|%>
+          <li>
+              <%= link_to (product) do %>
+                <%=image_tag("/images/products/"+product.id.to_s+"/"+product.id.to_s+"_xlarge.jpg", alt:"")%>
+              <% end %>
+            <%= link_to (product) do %>
+              <span class="title"><%= product.title %></span>
+            <% end %>
+            <span class="gift"><%= product.gift %></span>
+          </li>
+        <%end%>
+      </ul>
+    </div>
+  </section>
+<%= render partial: "products/aside" %>
+</div>
