@@ -143,14 +143,33 @@
     })
   };
   $_.page_loader.prototype.categories_load = function(){
-    var that = this;
+    var that = this, data, template;
     if($_.page_loader.prototype.is_end.call(this)) return;
     $.ajax({
       url: this.url+"?page="+this.page,
       async: false,
+      dataType: 'json',
       success: function(items){
+        template = _.template(
+          "<li>"+
+          "<a href='<%=link%>'>"+
+          "<img src='<%=image%>'>"+
+          "</a><a href='<%=link%>'>"+
+          "<span class='title'><%=title%></span>"+
+          "</a><span class='gift'><%=gift%></span>"
+        );
+        for(var i=0; i<items.length; i++){
+          data = {};target = items[i];
+          if(!_.isNull(target)){
+            data.image = "/images/products/"+target.id+"/"+target.id+"_original.jpg";
+            data.link = "/products/"+target.id;
+            data.title = target.title;
+            data.gift = target.gift;
+            $(".products ul").append(template(data));
+          }
+        }
         that.page++;
       }
-    });
+    })
   };
 }).call(this,window);
