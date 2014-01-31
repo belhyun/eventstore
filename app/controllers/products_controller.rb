@@ -13,51 +13,42 @@ class ProductsController < ApplicationController
   end
 
   def story
-    totalGroups = Group.all
-    @groups = Kaminari.paginate_array(Group.all.order('created_at DESC')).page(params[:page]).per(2)
-    result = Hash.new
-    result['total_cnt'] = totalGroups.count
-    result['groups'] = @groups
+    totalGroups = Group.all.order('created_at DESC')
+    @groups = Kaminari.paginate_array(totalGroups).page(params[:page]).per(10)
+    gon.total_cnt = totalGroups.count
     respond_to do |format|
       format.html 
-      format.json { render json: result.to_json(:include => :products)}
+      format.json { render json: @groups.to_json(:include => :products)}
     end
   end
 
   def urgent
-    totalProducts = Product.total
-    @products = Kaminari.paginate_array(Product.urgent).page(params[:page]).per(10)
-    result = Hash.new
-    result['total_cnt'] = totalProducts.count
-    result['products'] = @products
+    urgent = Product.urgent
+    @products = Kaminari.paginate_array(urgent).page(params[:page]).per(10)
+    gon.total_cnt = urgent.count
     respond_to do |format|
       format.html 
-      format.json { render json: result.to_json}
+      format.json { render json: @products.to_json}
     end
   end
 
   def rank
     totalProducts = Product.popularProducts
     @products = Kaminari.paginate_array(totalProducts).page(params[:page]).per(10)
-    result = Hash.new
-    result['total_cnt'] = totalProducts.count
-    result['products'] = @products
+    gon.total_cnt = totalProducts.count
     respond_to do |format|
       format.html 
-      format.json { render json: result.to_json}
+      format.json { render json: @products.to_json}
     end
   end
 
   def recent
-    totalProducts = Product.total
     recent = Product.recent
     @products = Kaminari.paginate_array(recent).page(params[:page]).per(10)
-    result = Hash.new
-    result['total_cnt'] = recent.count
-    result['products'] = @products
+    gon.total_cnt = recent.count
     respond_to do |format|
       format.html 
-      format.json { render json: result.to_json}
+      format.json { render json: recent.to_json}
     end
   end
 
@@ -71,6 +62,9 @@ class ProductsController < ApplicationController
       @userProduct = UserProduct.where(:user_id => current_user.id, :product_id => params[:id]).first
       @user = User.find(current_user.id)
     end
+  end
+
+  def test
   end
 
   # GET /products/new

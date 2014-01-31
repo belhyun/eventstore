@@ -17,4 +17,3 @@
 //= require pagination
 //= require active_admin/base
 //= require common
-//= require jquery.wookmark

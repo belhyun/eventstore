@@ -6,7 +6,7 @@
         <%@products.each do |product|%>
           <li>
               <%= link_to (product) do %>
-                <%=image_tag("/images/products/"+product.id.to_s+"/"+product.id.to_s+"_xlarge.jpg", alt:"")%>
+                <%=image_tag("/images/products/"+product.id.to_s+"/"+product.id.to_s+"_original.jpg", alt:"")%>
               <% end %>
             <%= link_to (product) do %>
               <span class="title"><%= product.title %></span>
@@ -15,6 +15,7 @@
           </li>
         <%end%>
       </ul>
+      <%= render partial: "products/more_load" %>
     </div>
   </section>
 <%= render partial: "products/aside" %>

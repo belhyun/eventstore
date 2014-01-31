@@ -5,6 +5,7 @@
 <%= favicon_link_tag 'noimage_small_bg.jpg', type: 'image/jpeg'%>
 <%= stylesheet_link_tag    "application", media: "all"%>
 <%= javascript_include_tag "application", "#{@js_controller}_#{@js_action}"%>
+<%= include_gon %>
 <% if mobile_device? %>
   <script type="text/javascript" src="http://adimg3.search.naver.net/mobilejs/mobilead_min.js"></script>
 <% end %>
@@ -13,7 +14,7 @@
 </head>
 <body class="index_home" data-twttr-rendered="true">
   <% if mobile_device? %>
-    <div id="nbpmobilead_div"></div>
+    <!--<div id="nbpmobilead_div"></div>-->
     <%= render partial: "layouts/ad" %>
   <% end %>
   <%= render partial: "layouts/nav_top" %>

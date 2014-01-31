@@ -5,25 +5,28 @@
   });
 
   $_.page_loader = function(argument){
-    this.totalCnt = 0;
     this.page = 2;
     this.url = argument['url'];
     this.per_page = argument['per_page'];
   };
 
-  $_.page_loader.prototype.load = function(){
-    var v = parseInt(this.totalCnt/this.per_page)+1, that = this;
-    this.totalCnt = that.totalCnt;
-    if(this.totalCnt != 0 && v  == this.page-1){
+  $_.page_loader.prototype.is_end = function(){
+    var v = parseInt(gon.total_cnt/this.per_page)+1 , args = arguments;
+    if(gon.total_cnt != 0 && v  == this.page-1){
       $('.more_load').text("끝입니다.");
-      return;
-    } 
+      return true;
+    }
+    return false;
+  };
+
+  $_.page_loader.prototype.load = function(){
+    var that = this, template, data, target, html;
+    if($_.page_loader.prototype.is_end.call(this)) return;
     $.ajax({
       url: this.url+"?page="+this.page,
       async: false,
-      success: function(json){
-        that.totalCnt = json.total_cnt;
-        var template = _.template(
+      success: function(items){
+        template = _.template(
           "<li>"+
           "<div class='rank'><span><%=rank%><span></span></span></div>"+
           "<div class='info'>"+
@@ -43,10 +46,9 @@
           "</div>"+
           "</div>"+
           "</li>");
-        items = json.products;
         for(var i=1;i<=items.length;i++){
-          var data = {};
-          var target = items[i-1];
+          data = {};
+          target = items[i-1];
           if(target != null){
             if(target.image_file_size != null){
               data.image = "http://eventstore.co.kr/images/products/"+target.id+"/"+target.id+"_medium.jpg";
@@ -68,7 +70,7 @@
             }else{
               data.expire_days = target.expire_days;
             }
-            var html = template(data);
+            html = template(data);
             $("ul.events_list").append(html);
           }
         }
@@ -78,18 +80,13 @@
   };
 
   $_.page_loader.prototype.group_load = function(){
-    var v = parseInt(this.totalCnt/this.per_page)+1, that = this;
-    this.totalCnt = that.totalCnt; 
-    if(this.totalCnt != 0 && v  == this.page-1){
-      $('.more_load').text("끝입니다.");
-      return;
-    } 
+    var that = this, productsTemplate, groupTemplate, items, data, productData, group, html, products, sum, productHtml;
+    if($_.page_loader.prototype.is_end.call(this)) return;
     $.ajax({
       url: "/products/story.json?page="+this.page,
       async: false,
-      success: function(json){
-        that.totalCnt = json.total_cnt;
-        var productsTemplate = _.template(
+      success: function(items){
+        productsTemplate = _.template(
           "<li>"+
           "<img src='<%=image%>'>"+
           "<div class='info'>"+
@@ -102,7 +99,7 @@
           "</li>"
           );
 
-        var groupTemplate = _.template(
+        groupTemplate = _.template(
           "<div class='products_title'>"+
           "<div class='text'>"+
           "<h4><a href='#none'><%=title%></a></h4>"+
@@ -114,19 +111,13 @@
           "</div>"+
           "</div>"
           );
-
-        var items = json.groups;
         for(var i=0; i<items.length;i++){
-          var data = {};
-          var productData = {};
-          var group = items[i];
-          var html = '';
+          data = {};productData = {};group = items[i];html = '';
           if(group != null){
-            var products = group.products;
-            var sum = 0;
+            products = group.products;sum = 0;
             data.title = group.title;
             data.desc = group.desc;
-            var productHtml = "<ul class='events'>";
+            productHtml = "<ul class='events'>";
             for(var j=0; j<products.length;j++){
               sum += products[j].hits;
               productData.title = products[j].title;
@@ -143,12 +134,23 @@
             }
             productHtml += "</ul>";
             data.count = sum;
-            var html = "<li>"+ groupTemplate(data) + productHtml + "</li>";
+            html = "<li>"+ groupTemplate(data) + productHtml + "</li>";
             $(".popular_events_list > ul").append(html);
           }
         }
         that.page++;
       }
     })
+  };
+  $_.page_loader.prototype.categories_load = function(){
+    var that = this;
+    if($_.page_loader.prototype.is_end.call(this)) return;
+    $.ajax({
+      url: this.url+"?page="+this.page,
+      async: false,
+      success: function(items){
+        that.page++;
+      }
+    });
   };
 }).call(this,window);

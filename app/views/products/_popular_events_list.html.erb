@@ -1,40 +1,40 @@
 <div class="popular_events_list">
-    <ul>
-      <%@groups.each_with_index do |group, index|%>
-        <li>
-      <div class="products_title">
-        <div class="text">
-          <h4><a href="#none"><%=group.title%></a></h4>
-          <h5><a href="#none"><%=group.desc%></a></h5>
-        </div>
-        <div class="counts">
-          <span class="view_counts"><%=group.products.sum(:hits)%></span>
-          <span class="view_text">조회 수</span>
-        </div>
+  <ul>
+    <%@groups.each_with_index do |group, index|%>
+      <li>
+    <div class="products_title">
+      <div class="text">
+        <h4><a href="#none"><%=group.title%></a></h4>
+        <h5><a href="#none"><%=group.desc%></a></h5>
       </div>
-      <ul class="events">
-        <%group.products.each do |product|%>
-          <li>
-        <div class="goods_image">
-        <%if product.image_file_size.nil?%>
-          <%=image_tag("noimage_small_bg.jpg")%>
-        <%else%>
-          <%=image_tag("/images/products/"+product.id.to_s+"/"+product.id.to_s+"_medium.jpg", alt:"")%>
-        <%end%>
-        </div>
-        <div class="info">
-          <%= link_to(product) do %>
-            <span class="title"><%=product.title%></span>
-          <% end %>
-          <span class="publisher">주최: <%=product.publisher%></span>
-          <span class="gift">상품: <%=product.gift%></span>
-          <span class="end_date">종료일자: <%=product.end_date%></span>
-        </div>
-        </li>
+      <div class="counts">
+        <span class="view_counts"><%=group.products.sum(:hits)%></span>
+        <span class="view_text">조회 수</span>
+      </div>
+    </div>
+    <ul class="events">
+      <%group.products.each do |product|%>
+        <li>
+      <div class="goods_image">
+      <%if product.image_file_size.nil?%>
+        <%=image_tag("noimage_small_bg.jpg")%>
+      <%else%>
+        <%=image_tag("/images/products/"+product.id.to_s+"/"+product.id.to_s+"_medium.jpg", alt:"")%>
       <%end%>
-      </ul>  
+      </div>
+      <div class="info">
+        <%= link_to(product) do %>
+          <span class="title"><%=product.title%></span>
+        <% end %>
+        <span class="publisher">주최: <%=product.publisher%></span>
+        <span class="gift">상품: <%=product.gift%></span>
+        <span class="end_date">종료일자: <%=product.end_date%></span>
+      </div>
       </li>
-    <% end %>
-    </ul>
-  </div>
+    <%end%>
+    </ul>  
+    </li>
+  <% end %>
+  </ul>
+</div>
 
