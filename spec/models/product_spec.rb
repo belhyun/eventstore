@@ -18,4 +18,11 @@ describe Product do
       end
     end
   end
+
+  it "urgent_rank_products" do
+    Product.urgent.sort{|a,b|
+      a.end_date <=> b.end_date || a.score <=> b.score
+      #a.score > b.score if a.end_date.eql? b.end_date
+    }
+  end
 end

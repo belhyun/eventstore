@@ -1,5 +1,12 @@
 <li>
-<div class="rank"><span><%=index+1%><span></div>
+<div class="rank">
+  <span>
+    <%=index+1%>
+  </span>
+  <% if product.is_premium %>
+    <%= image_tag "star.png" %>
+  <% end %>
+</div>
 <div class="info">
   <div class="goods_image">
   <%if product.image_file_size.nil?%>

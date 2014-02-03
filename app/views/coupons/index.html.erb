@@ -1,0 +1,41 @@
+<h1>Listing coupons</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Link</th>
+      <th>Start date</th>
+      <th>End date</th>
+      <th>Gift</th>
+      <th>Gift type</th>
+      <th>Description</th>
+      <th>Hits</th>
+      <th>Is premium</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @coupons.each do |coupon| %>
+      <tr>
+        <td><%= coupon.link %></td>
+        <td><%= coupon.start_date %></td>
+        <td><%= coupon.end_date %></td>
+        <td><%= coupon.gift %></td>
+        <td><%= coupon.gift_type %></td>
+        <td><%= coupon.description %></td>
+        <td><%= coupon.hits %></td>
+        <td><%= coupon.is_premium %></td>
+        <td><%= link_to 'Show', coupon %></td>
+        <td><%= link_to 'Edit', edit_coupon_path(coupon) %></td>
+        <td><%= link_to 'Destroy', coupon, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Coupon', new_coupon_path %>

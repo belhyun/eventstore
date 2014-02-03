@@ -15,7 +15,7 @@ class Product < ActiveRecord::Base
   after_create :reg_rank_table
   after_update :reg_rank_table
   scope :select_with_expire_days , Proc.new{ Product.select('products.*, datediff(products.end_date, now()) as expire_days')}
-  scope :urgent, lambda {Product.select_with_expire_days.where("end_date >= SUBDATE(NOW(),1)").order("end_date asc")}
+  scope :urgent, lambda {Product.select_with_expire_days.where("end_date >= SUBDATE(NOW(),1)").order("end_date asc").sort{|a,b| a.end_date <=> b.end_date || a.score <=> b.score}}
   scope :total , lambda {Product.where("end_date >= SUBDATE(NOW(),1)").order('id DESC')}
   scope :recent , Proc.new {Product.select_with_expire_days.where("created_at >= SUBDATE(NOW(),2)").order('id DESC')}
 
@@ -33,7 +33,7 @@ class Product < ActiveRecord::Base
   end
 
   def score
-    @total
+    @total ||= $redis.zscore(Rails.application.config.rank_key, id)
   end
 
   def self.products

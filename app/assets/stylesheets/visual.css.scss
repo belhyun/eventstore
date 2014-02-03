@@ -3,25 +3,57 @@
     position: relative;
     width: auto;
     height: auto;
-    //padding-left: 435px;
-    margin-bottom: 30px;
-    margin-top: 68px;
-    //padding-top: 45px;
+    margin:10px 0 30px 0;
     border: 1px solid #dfdfdf;
-    background: #fff;
-  }
-  .visual_image {
-    position: relative;
-    width: auto;
-    margin: 1%;
+    background: #99d4f1;
+    overflow:hidden;
+    display:block;
+    .visual-msg{
+      width:100%;
+      margin:5px;
+      overflow:hidden;
+      img.free{
+        display:block;
+        float:left;
+        margin:3%;
+      }
+      h1{
+        display:inline-block;
+        margin-top:45px;
+        line-height:55px;
+        font-size:31.5px;
+        font-weight:bold;
+        color:#ffffff;
+        span{
+          color:#cd99f1;
+        }
+      }
+      img.gift_box{
+        float:right;
+      }
+    }
   }
 }
 
 @media screen and (max-width: 480px) {
   #contents .visual {
-    //padding-left: 10px;
-    //margin-left:10px;
-    //margin-right:10px;
-
+    .visual_image{
+      float:left;
+    }
+    .visual-msg{
+      width:100%;
+      margin:5% 5% 5% 0;
+      img{
+        float:left;
+      }
+      h1{
+        line-height:55px;
+        font-size:20.5px;
+        color:#ffffff;
+        span{
+          color:#cd99f1;
+        }
+      }
+    }
   }
 }

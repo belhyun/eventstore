@@ -14,13 +14,13 @@
 </head>
 <body class="index_home" data-twttr-rendered="true">
   <% if mobile_device? %>
-    <!--<div id="nbpmobilead_div"></div>-->
+    <div id="nbpmobilead_div"></div>
     <%= render partial: "layouts/ad" %>
   <% end %>
   <%= render partial: "layouts/nav_top" %>
   <%= render partial: "layouts/top_slide" %>
   <div id="contents" class="container">
-    <%= render partial: "layouts/visual" %>
+    <% render partial: "layouts/visual" %>
     <%= render partial: "layouts/categories" %>
     <%= render partial: "layouts/product_type", locals: {type: @type}%>
     <%= yield %>

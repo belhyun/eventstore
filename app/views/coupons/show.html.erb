@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @coupon.link %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @coupon.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @coupon.end_date %>
+</p>
+
+<p>
+  <strong>Gift:</strong>
+  <%= @coupon.gift %>
+</p>
+
+<p>
+  <strong>Gift type:</strong>
+  <%= @coupon.gift_type %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @coupon.description %>
+</p>
+
+<p>
+  <strong>Hits:</strong>
+  <%= @coupon.hits %>
+</p>
+
+<p>
+  <strong>Is premium:</strong>
+  <%= @coupon.is_premium %>
+</p>
+
+<%= link_to 'Edit', edit_coupon_path(@coupon) %> |
+<%= link_to 'Back', coupons_path %>

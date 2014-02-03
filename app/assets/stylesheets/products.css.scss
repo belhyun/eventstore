@@ -144,11 +144,8 @@
 div.column-container {
   .content .events_list {
     list-style: none;
-    //margin-top: 5px;
     background: #ffffff;
-    //padding: 13px 13px 20px 14px;
     border: 1px solid #dddde1;
-    //margin-right: 50px;
     .rank {
       position: relative;
       float: left;
@@ -159,6 +156,12 @@ div.column-container {
       span {
         display: block;
         margin: 45px 0 0 11px;
+      }
+      img{
+        display:block;
+        width:21px;
+        height:21px;
+        margin-left:5px;
       }
     }
   }
@@ -185,7 +188,7 @@ div.column-container{
 }
 
 #view_load {
-  background-color: #fa7070;
+  background-color: #99d4f1;
   width: 100%;
   overflow: hidden;
   height: 50px;
@@ -347,7 +350,7 @@ div.column-container .content {
 
 #contents .btn-group {
   .active {
-    background-color: #454d5f;
+    background-color: #99d4f1;
     color: #ffffff;
   }
   .btn! {}
@@ -415,7 +418,7 @@ body.show_products #contents div {
     .publisher {
       color: #fff;
       font-size: 15px;
-      background: #fa7070;
+      background: #99d4f1;
       padding: 10px 8px 8px 15px;
       font-weight: bold;
     }

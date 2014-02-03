@@ -1,6 +1,7 @@
 body {
   font-family: "맑은고딕", "Malgun Gothic", "나눔고딕","NanumGothic","NanumGothicOTF", "돋움", "dotum", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background-image: url("background_bg.png");
+  //background-image: url("background_bg.png");
+  background-color:#deeef6;
 }
 
 .btn {
@@ -14,6 +15,7 @@ body {
 
 #nbpmobilead_div {
   height: 50px;
+  margin-bottom:20px;
 }
 
 .navbar .navbar-fixed-top {
@@ -22,33 +24,38 @@ body {
 
 .navbar-fixed-top {
   position: relative;
+  top:-20px;
 }
 
 .navbar {
   .pull-right {
     float: right;
-    margin-top: 52px;
+    margin-top: 35px;
   }
   .navbar-inner {
-    background-color: #fa7070;
+    background-color: #99d4f1;
     background-image: none;
   }
 }
 
 .container {
   position: relative;
-  top: -20px;
 }
 
 .navbar-inner .container {
   .brand {
+    //background-image:url("free.png");
+    //background-position: center center;
+    //background-repeat:no-repeat;
     text-shadow: none;
     color: #ffffff;
     font-weight: bold;
     margin: 0 auto;
     display: block;
-    margin-left: 29%;
-    margin-top: 20px;
+    margin-left: 39%;
+    h2{
+      margin-top:20px;
+    }
   }
   .nav-collapse ul li a {
     text-shadow: none;
@@ -102,7 +109,11 @@ body {
     .btn, .btn-group {
       margin-top: 55px;
     }
+    a.btn.btn-navbar{
+      margin-top:35px;
+    }
   }
+
   .navbar-inner .container .brand {
     margin-left: 2%;
   }

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140117052815) do
+ActiveRecord::Schema.define(version: 20140203025348) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -51,20 +51,27 @@ ActiveRecord::Schema.define(version: 20140117052815) do
     t.datetime "updated_at"
     t.string   "title"
     t.text     "description"
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
   end
 
-  add_index "categories", ["email"], name: "index_categories_on_email", unique: true, using: :btree
-  add_index "categories", ["reset_password_token"], name: "index_categories_on_reset_password_token", unique: true, using: :btree
+  create_table "coupons", force: true do |t|
+    t.text     "link"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.text     "gift"
+    t.text     "gift_type"
+    t.text     "description"
+    t.integer  "hits"
+    t.boolean  "is_premium"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "image_file_name"
+    t.text     "image_content_type"
+    t.integer  "image_file_size"
+    t.date     "image_updated_at"
+    t.text     "image_url"
+    t.text     "title"
+    t.string   "publisher"
+  end
 
   create_table "group_products", force: true do |t|
     t.integer  "group_id"
@@ -105,8 +112,8 @@ ActiveRecord::Schema.define(version: 20140117052815) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.text     "image_url"
-    t.date     "reg_date"
     t.integer  "hits",               default: 0
+    t.boolean  "is_premium"
   end
 
   create_table "taggings", force: true do |t|
