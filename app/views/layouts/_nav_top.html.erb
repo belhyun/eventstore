@@ -7,15 +7,16 @@
         <span class="icon-bar"></span>
       </a>
       <a class="brand" href="/">
+        <%= image_tag "new_logo.png" %>
         <h2>이벤트스토어</h2>
       </a>
       <div class="nav-collapse">
         <ul class="nav pull-right">
           <%if current_user %>
-            <li><%= link_to "로그아웃", signout_path %></li>
+            <li id="sign-out"><%= link_to "로그아웃", "#none" %></li>
             <li><%= link_to "찜보기", :controller => 'users', :action => 'products', :id => current_user %></li>
           <%else%>
-            <li><%= link_to "페이스북 로그인", "/auth/facebook" %></li>
+            <li id="sign-in"><%= link_to "페이스북 로그인", "#none" %></li>
           <%end%>
         </ul>
       </div>

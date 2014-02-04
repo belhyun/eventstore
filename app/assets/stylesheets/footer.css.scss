@@ -1,0 +1,21 @@
+.footer {
+  clear: both;
+  background-color:rgb(153, 212, 241);
+  border-top: 1px solid #dddde1;
+  margin: 30px 0 0 0;
+  line-height: 16px;
+  font-size: 11px;
+  bottom: 0;
+  .logo {
+    color: #616161;
+    display: block;
+    position: relative;
+    font-size: 20px;
+    margin-top: 10px;
+    text-align: center;
+  }
+  .container {
+    top: 0;
+  }
+}
+

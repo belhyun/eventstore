@@ -30,12 +30,9 @@ class UserProductsController < ApplicationController
       render(:json => {:status => 403 }) and return
     end
     @user_product = UserProduct.new(user_product_params)
+    Product.addScoreToProduct(user_product_params[:product_id], 10)
     respond_to do |format|
       if @user_product.save
-        #RecommendWorker.perform_async(@user_product.id)
-        if !user_product_params[:product_id].nil?
-          Product.addScoreToProduct(user_product_params[:product_id], 5)
-        end
         format.html { redirect_to @user_product, notice: 'User product was successfully created.' }
         format.json { render json: @user_product, status: :created}
       else

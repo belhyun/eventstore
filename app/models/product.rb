@@ -98,6 +98,8 @@ class Product < ActiveRecord::Base
   end
 
   def self.updateHits(id)
-    Product.update_counters id, :hits => 1
+    if Product.update_counters id, :hits => 1
+      self.addScoreToProduct(id, 100)
+    end
   end
 end

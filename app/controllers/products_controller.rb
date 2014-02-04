@@ -4,7 +4,8 @@ class ProductsController < ApplicationController
   before_action :set_popular_product, only: [:story, :rank, :urgent, :recent]
   before_action :set_categories, only: [:story, :rank, :urgent, :recent]
   before_action :set_type, only: [:story, :rank, :urgent, :recent]
-  layout "product_detail" , :only => :show
+  before_action :set_current_user_js, only: [:show]
+  layout "product_show" , :only => :show
   protect_from_forgery :except => :create
 
   # GET /products
@@ -48,7 +49,7 @@ class ProductsController < ApplicationController
     gon.total_cnt = recent.count
     respond_to do |format|
       format.html 
-      format.json { render json: recent.to_json}
+      format.json { render json: @products.to_json}
     end
   end
 
@@ -56,12 +57,10 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     Product.updateHits(params[:id])
-    Product.addScoreToProduct(@product.id, 100)
-    @zzimCnt = UserProduct.getZzimCnt(params[:id])
-    if !current_user.nil?
-      @userProduct = UserProduct.where(:user_id => current_user.id, :product_id => params[:id]).first
-      @user = User.find(current_user.id)
-    end
+    @zzimCnt = UserProduct.get_zzim_cnt(params[:id])
+    @userProduct = UserProduct.where(:user_id => current_user.id, :product_id => params[:id]).first unless current_user.nil?
+    gon.userProduct = @userProduct 
+    gon.product = Product.find(params[:id])
   end
 
   def test
@@ -147,5 +146,9 @@ class ProductsController < ApplicationController
 
     def set_categories
       @categories = Category.all
+    end
+
+    def set_current_user_js
+      gon.current_user = current_user
     end
 end

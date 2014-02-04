@@ -21,5 +21,6 @@ module Eventmoayo
     # config.i18n.default_locale = :de
 		config.logger = Logger.new(STDOUT) if($0 == 'irb' || $0 == 'script/rails')
     config.time_zone = "Asia/Seoul"
+    I18n.enforce_available_locales = false
   end
 end

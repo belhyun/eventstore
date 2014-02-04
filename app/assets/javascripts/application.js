@@ -13,7 +13,8 @@
 //= require jquery
 //= require twitter/bootstrap
 //= require underscore
-//= require layout
 //= require pagination
 //= require active_admin/base
 //= require common
+//= require layout
+

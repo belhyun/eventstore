@@ -1,0 +1,36 @@
+<li>
+<div class="rank">
+  <span>
+    <%=index+1%>
+  </span>
+  <% if coupon.is_premium %>
+    <%= image_tag "star.png" %>
+  <% end %>
+</div>
+<div class="info">
+  <div class="goods_image">
+    <%=image_tag("/images/coupons/"+coupon.id.to_s+"/"+coupon.id.to_s+"_medium.jpg", alt:"")%>
+  </div>
+  <div class="extra">
+    <div class="end_date">
+      <span class="extra_top">마감일</span>
+      <%if coupon.expire_days == '0' %>
+        <span class="extra_body">D-day<span>
+      <%else%>
+        <span class="extra_body">D-<%=coupon.expire_days%><span>
+      <%end%>
+    </div>
+    <div class="counts">
+      <span class="extra_top">조회수</span>
+      <span class="extra_body"><%=coupon.hits%></span>
+    </div>
+    </div>
+    <div class="product_info">
+    <div class="publisher"><%=coupon.publisher %></div>
+    <%= link_to(coupon) do %>
+    <span class="title"><%=coupon.title%></span>
+  <% end %>
+      경품: <span class="gift"><%=coupon.gift%></span>
+  </div>
+  </div>
+</li>

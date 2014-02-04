@@ -1,44 +1,63 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Link:</strong>
-  <%= @coupon.link %>
-</p>
-
-<p>
-  <strong>Start date:</strong>
-  <%= @coupon.start_date %>
-</p>
-
-<p>
-  <strong>End date:</strong>
-  <%= @coupon.end_date %>
-</p>
-
-<p>
-  <strong>Gift:</strong>
-  <%= @coupon.gift %>
-</p>
-
-<p>
-  <strong>Gift type:</strong>
-  <%= @coupon.gift_type %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @coupon.description %>
-</p>
-
-<p>
-  <strong>Hits:</strong>
-  <%= @coupon.hits %>
-</p>
-
-<p>
-  <strong>Is premium:</strong>
-  <%= @coupon.is_premium %>
-</p>
-
-<%= link_to 'Edit', edit_coupon_path(@coupon) %> |
-<%= link_to 'Back', coupons_path %>
+<div id="contents" class="container" role="main"> 
+  <div class="image">
+    <% if @coupon.image_file_size.nil?%>
+      <%=image_tag("noimage_bg.jpg")%>
+    <%else%>
+        <%=image_tag("/images/coupons/"+@coupon.id.to_s+"/"+@coupon.id.to_s+"_original.jpg", alt:"")%>
+      <%#end%>
+    <%end%>
+  </div>
+  <div class="info_block">
+    <div class="info">
+      <div class="publisher">
+        <%=@coupon.publisher %>
+      </div>
+      <div class="detail">
+        <ul>
+          <h3><li><%=@coupon.title.to_s.gsub(/\r\n/,"<br/>").html_safe%></li></h3>
+          <li>
+          <div class="category">
+            설명
+          </div>
+          <div class="sub_detail">
+            <%=@coupon.description.to_s.gsub(/\r\n/,"<br/>").html_safe%>
+          </div>
+          </li>
+          <li>
+          <div class="category">
+            경품
+          </div>
+          <div class="sub_detail">
+            <%=@coupon.gift.to_s.gsub(/\r\n/,"<br/>").html_safe%>
+          </div>
+          </li>
+          <li>
+          <div class="category">
+           종료일자
+          </div>
+          <div class="sub_detail">
+            <%=@coupon.end_date%>
+          </div>
+          </li>
+        </ul>
+      </div>
+      <div class="counts">
+        <div class="views_count zzim_count">
+          <span class="number">
+            0<%@zzimCnt%>
+          </span>
+          <span class="txt">zzim</span>
+        </div>
+        <div class="views_count">
+          <span class="number">
+            <%=@coupon.hits%>
+          </span>
+          <span class="txt">views</span>
+        </div>
+      </div>
+    </div>
+      <%= link_to "참여하기", @coupon.link, :class => 'btn btn-large outlink btn_area' ,:target=>'_blank' %>
+      <input type="hidden" id="product_id" name="product_id" value="<%=@coupon.id%>"/>
+      <span class="btn btn-large zzim btn_area">찜하기</span>
+  </div>
+</div>

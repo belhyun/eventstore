@@ -1,41 +1,12 @@
-<h1>Listing coupons</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Link</th>
-      <th>Start date</th>
-      <th>End date</th>
-      <th>Gift</th>
-      <th>Gift type</th>
-      <th>Description</th>
-      <th>Hits</th>
-      <th>Is premium</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @coupons.each do |coupon| %>
-      <tr>
-        <td><%= coupon.link %></td>
-        <td><%= coupon.start_date %></td>
-        <td><%= coupon.end_date %></td>
-        <td><%= coupon.gift %></td>
-        <td><%= coupon.gift_type %></td>
-        <td><%= coupon.description %></td>
-        <td><%= coupon.hits %></td>
-        <td><%= coupon.is_premium %></td>
-        <td><%= link_to 'Show', coupon %></td>
-        <td><%= link_to 'Edit', edit_coupon_path(coupon) %></td>
-        <td><%= link_to 'Destroy', coupon, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div class="column-container">
+  <div class="content">
+    <ul class="events_list">
+      <%@coupons.each_with_index do |coupon,index| %>
+        <%= render partial: "coupons/index", :locals => {:coupon => coupon, :index => index} %>
     <% end %>
-  </tbody>
-</table>
+    </ul>
+    <%= render partial: "products/more_load" %>
+  </div>
+  <%= render partial: "products/aside" %>
+</div>
 
-<br>
-
-<%= link_to 'New Coupon', new_coupon_path %>

@@ -1,33 +1,33 @@
-#contents .btn-group .active{
-  background-color: #454d5f;
-  color: #ffffff;
+#contents .btn-group {
+  .active {
+    background-color: #99d4f1;
+    color: #ffffff;
+  }
+  .btn! {}
 }
 
-#contents .btn-group .btn{
+.event-selector {
+  .btn {
+    width: 24.9%;
+    padding: 13px 0 13px 0;
+  }
+  width: 100%;
 }
 
-.event-selector .btn{
-  width: 24.9%;
-  padding: 13px 0 13px 0;
+.btn-group > .btn {
+  &:first-child {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  &:last-child {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
 }
 
-.event-selector{
-  width:100%
-}
-
-.btn-group > .btn:first-child{
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-}
-
-.btn-group > .btn:last-child{
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
-@media screen and (max-width: 480px){
-  .event-selector{
-    width:97%;
-    margin-left:2px;
+@media screen and (max-width: 480px) {
+  .event-selector {
+    width: 97%;
+    margin-left: 2px;
   }
 }

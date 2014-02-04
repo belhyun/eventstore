@@ -5,26 +5,20 @@
 <%= favicon_link_tag 'new_logo.png', type: 'image/png'%>
 <%= stylesheet_link_tag    "application", media: "all"%>
 <%= javascript_include_tag "application", "#{@js_controller}_#{@js_action}"%>
-<%= include_gon %>
 <% if mobile_device? %>
   <script type="text/javascript" src="http://adimg3.search.naver.net/mobilejs/mobilead_min.js"></script>
 <% end %>
 <%= csrf_meta_tags %>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body class="index_home" data-twttr-rendered="true">
+<body class="show_products" data-twttr-rendered="true">
   <% if mobile_device? %>
     <div id="nbpmobilead_div"></div>
     <%= render partial: "layouts/ad" %>
   <% end %>
-  <%= render partial: "layouts/nav_top" %>
-  <%= render partial: "layouts/top_slide" %>
-  <div id="contents" class="container">
-    <% render partial: "layouts/visual" %>
-    <%= render partial: "layouts/categories" %>
-    <%= render partial: "layouts/product_type", locals: {type: @type}%>
-    <%= yield %>
-  </div>
-  <%= render partial: "layouts/footer" %>
+  <%= render partial: "layouts/nav_top"%>
+  <%= yield %>
+</div>
+<%= render partial: "layouts/footer" %>
 </body>
 </html>

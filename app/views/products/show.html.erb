@@ -3,7 +3,6 @@
     <% if @product.image_file_size.nil?%>
       <%=image_tag("noimage_bg.jpg")%>
     <%else%>
-      <%#link_to "My superb link",:href=>"http://eventstore.co.kr/images/products/77980/77980_original.jpg", :data => { :colorbox => true } do%>
         <%=image_tag("/images/products/"+@product.id.to_s+"/"+@product.id.to_s+"_original.jpg", alt:"")%>
       <%#end%>
     <%end%>
@@ -58,15 +57,11 @@
       </div>
     </div>
       <%= link_to "참여하기", @product.link, :class => 'btn btn-large outlink btn_area' ,:target=>'_blank' %>
-      <input type="hidden" id="product_id" name="product_id" value="<%=@product.id%>"/>
-      <%if !current_user.nil? %>
-        <input type="hidden" id="user_id" name="user_id" value="<%=@user.id%>"/>
-      <%end%>
-      <%if !@userProduct.nil? %>
+
+      <%if current_user && !@userProduct.nil? %>
         <%= link_to "찜 안할래요", "#none", :class => 'btn btn-large not-zzim btn_area'%>
-      <input type="hidden" id="user_product_id" name="user_product_id" value="<%=@userProduct.id%>"/>
-    <%else%>
+      <%else%>
         <span class="btn btn-large zzim btn_area">찜하기</span>
-    <%end%>
+      <%end%>
   </div>
 </div>

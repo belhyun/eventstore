@@ -31,7 +31,7 @@ end
 gem 'unicorn'
 
 # Use Capistrano for deployment
-# gem 'capistrano', group: :development
+gem 'capistrano', group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
@@ -71,6 +71,7 @@ gem 'acts-as-taggable-on'
 gem 'facebox-rails'
 gem 'gon'
 gem 'rspec-rails', '~> 3.0.0.beta'
+gem 'newrelic_rpm'
 group :test do
   gem "factory_girl_rails"
   gem "guard-rspec"
