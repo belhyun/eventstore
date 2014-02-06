@@ -30,7 +30,25 @@ body {
 .navbar {
   .pull-right {
     float: right;
-    margin-top: 35px;
+    margin-top: 15px;
+    li{
+      list-style:none;
+      padding:10px 35px 10px 0;
+      float:left;
+      a{
+        font-weight:bold;
+        color: #ffffff;
+      }
+    }
+    #sign-in{
+      a img{
+        width:50%;
+        height:40px;
+      }
+    }
+
+    #sign-out{
+    }
   }
   .navbar-inner {
     background-color: #99d4f1;
@@ -65,6 +83,10 @@ body {
     color: #ffffff;
     font-weight: bold;
   }
+
+  .nav{
+    float:none;
+  }
 }
 
 .navbar {
@@ -84,6 +106,9 @@ body {
     .container {
       width: auto;
       padding: 0;
+      .nav{
+        float:left;
+      }
     }
     .btn, .btn-group {
       margin-top: 55px;

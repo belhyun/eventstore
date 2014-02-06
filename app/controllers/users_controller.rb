@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  layout "product_detail" , :only => :products
+  layout "product_show" , :only => :products
 
   # GET /users
   # GET /users.json

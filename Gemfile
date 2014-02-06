@@ -76,4 +76,5 @@ gem 'newrelic_rpm'
 group :test do
   gem "factory_girl_rails"
   gem "guard-rspec"
+  gem "guard-livereload"
 end
