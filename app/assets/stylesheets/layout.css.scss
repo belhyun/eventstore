@@ -30,7 +30,7 @@ body {
 .navbar {
   .pull-right {
     float: right;
-    margin-top: 15px;
+    margin-top: 35px;
     li{
       list-style:none;
       padding:10px 35px 10px 0;
@@ -108,6 +108,9 @@ body {
       padding: 0;
       .nav{
         float:left;
+        .pull-right{
+          margin-top:15px;
+        }
       }
     }
     .btn, .btn-group {
