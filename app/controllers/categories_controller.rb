@@ -18,6 +18,6 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
   end
   def set_popular_products
-    @rankProducts = Kaminari.paginate_array(Product.popularProducts).page(params[:page]).per(50)
+    @rankProducts = Kaminari.paginate_array(Product.popularProducts).page(params[:page]).per(100)
   end
 end

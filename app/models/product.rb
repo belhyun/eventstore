@@ -89,10 +89,9 @@ class Product < ActiveRecord::Base
 
   def self.removeExpireProducts
     Product.where("end_date < CURDATE()").each do  |product|
-      if product.delete
-        $redis.zrem(Rails.application.config.rank_key, product.id)
-        system("rm -rf #{File.absolute_path(Rails.root)}/public/images/products/#{product.id}")
-      end
+      product.delete
+      $redis.zrem(Rails.application.config.rank_key, product.id)
+      system("rm -rf #{File.absolute_path(Rails.root)}/public/images/products/#{product.id}")
     end
     #GroupProduct.removeExpireProducts
   end

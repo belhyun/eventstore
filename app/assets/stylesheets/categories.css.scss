@@ -11,6 +11,7 @@ $small : 480px;
     }
 
     .category-inner{
+      padding:0 0 0 15px;
       ul{
         margin:0 0 0 15px;
         li{
@@ -19,7 +20,6 @@ $small : 480px;
           font-weight:bold;
           font-size:12px;
           margin: 0 5px 10px 0;
-
           a{
             span{
               border: 1px solid #535353;

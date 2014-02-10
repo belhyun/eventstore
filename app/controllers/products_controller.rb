@@ -14,7 +14,7 @@ class ProductsController < ApplicationController
   end
 
   def story
-    totalGroups = Group.all.order('created_at DESC')
+    totalGroups = Group.all.order('created_at DESC') + Category.all.order("created_at DESC")
     @groups = Kaminari.paginate_array(totalGroups).page(params[:page]).per(10)
     gon.total_cnt = totalGroups.count
     respond_to do |format|
@@ -127,7 +127,7 @@ class ProductsController < ApplicationController
     end
 
     def set_popular_product
-      @rankProducts = Kaminari.paginate_array(Product.popularProducts).page(params[:page]).per(50)
+      @rankProducts = Kaminari.paginate_array(Product.popularProducts).page(params[:page]).per(100)
     end
 
     def set_user

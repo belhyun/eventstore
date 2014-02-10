@@ -9,22 +9,18 @@
       </a>
       -->
       <a class="brand" href="/">
-        <%= image_tag "new_logo.png" %>
-        <h2>이벤트스토어</h2>
+        <%= image_tag "pc_logo.png" %>
       </a>
       <div class="nav">
         <ul class="pull-right">
           <%if current_user %>
-            <li id="sign-out"><%= link_to "로그아웃", "#none" %></li>
+            <li id="sign-out"><%= link_to "logout", "#none" %></li>
             <li><%= link_to "찜보기", :controller => 'users', :action => 'products', :id => current_user %></li>
           <%else%>
-            <!--
             <li id="sign-in">
               <%= link_to "#none" do%>
                 <%= image_tag "facebook_login.png" %>
               <% end %>
-            -->
-              <li id="sign-in"><%= link_to "페이스북 로그인", "#none" %></li>
             </li>
           <%end%>
         </ul>

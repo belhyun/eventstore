@@ -6,8 +6,8 @@ class Group < ActiveRecord::Base
   attr_accessor :products_cnt
   acts_as_taggable
 
-  after_create :make_group_products
-  after_update :make_group_products
+  #after_create :make_group_products
+  #after_update :make_group_products
 
   private
   def make_group_products

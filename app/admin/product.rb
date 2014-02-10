@@ -25,6 +25,7 @@ ActiveAdmin.register Product do
       f.input :is_premium
       f.input :score, :required => true, :input_html => { :value => $redis.zscore(Rails.application.config.rank_key, product.id)}
       f.input :categories, :as => :check_boxes, :collection => Category.all
+      f.input :groups, :as => :check_boxes, :collection => Group.all
     end
     f.buttons
   end

@@ -4,7 +4,7 @@ class CouponsController < InheritedResources::Base
   before_action :set_type
   layout "coupon_show" , :only => :show
   def index
-    @coupons = Kaminari.paginate_array(Coupon.select_with_expire_days.recent).page(params[:page]).per(10)
+    @coupons = Kaminari.paginate_array(Coupon.select_with_expire_days).page(params[:page]).per(10)
     gon.total_cnt = @coupons.count
     respond_to do |format|
       format.html 
