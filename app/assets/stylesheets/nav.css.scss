@@ -9,7 +9,7 @@
 
 .navbar {
   .pull-right {
-    float: right;
+    float: left;
     margin-top: 38px;
     li{
       list-style:none;
@@ -21,6 +21,10 @@
       }
     }
   }
+  .btn-android{
+    float: right;
+  }
+
   .navbar-inner {
     background-color: #99d4f1;
     background-image: none;

@@ -13,6 +13,11 @@ class ProductsController < ApplicationController
   def index
   end
 
+  def search
+    @search = Product.search(params[:search])
+    render :action => "search", :layout => nil
+  end
+
   def story
     totalGroups = Group.all.order('created_at DESC') + Category.all.order("created_at DESC")
     @groups = Kaminari.paginate_array(totalGroups).page(params[:page]).per(10)
