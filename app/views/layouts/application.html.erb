@@ -13,10 +13,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body class="index_home" data-twttr-rendered="true">
-  <% if mobile_device? %>
-    <div id="nbpmobilead_div"></div>
-    <%= render partial: "layouts/ad" %>
-  <% end %>
+  <%= render partial: "layouts/ad" %>
   <%= render partial: "layouts/nav_top" %>
   <%= render partial: "layouts/top_slide" %>
   <div id="contents" class="container">
