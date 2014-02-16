@@ -17,4 +17,5 @@
 //= require active_admin/base
 //= require common
 //= require layout
+//= require search
 

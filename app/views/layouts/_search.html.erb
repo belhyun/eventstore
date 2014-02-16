@@ -1,0 +1,12 @@
+<div id="search">
+  <%=form_for search,:url=>search_products_path,:method=>"post",html:{:class=>"navbar-form navbar-left"},:role=>"search",:remote=>true do |f| %>
+    <div class="form-group">
+      <%= text_field_tag 'search', nil, placeholder: '검색' %>
+    </div>
+    <span class="glyphicon glyphicon-search">
+      <%= link_to "#none" do %>
+        <%= image_tag "search.png" %>
+      <%end%>
+    </span>
+  <%end%>
+</div>

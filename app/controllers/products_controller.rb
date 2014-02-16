@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
   before_action :set_categories, only: [:story, :rank, :urgent, :recent]
   before_action :set_type, only: [:story, :rank, :urgent, :recent]
   before_action :set_current_user_js, only: [:show]
+  before_action :set_search
   layout "product_show" , :only => :show
   protect_from_forgery :except => :create
 
@@ -14,7 +15,6 @@ class ProductsController < ApplicationController
   end
 
   def search
-    @search = Product.search(params[:search])
     render :action => "search", :layout => nil
   end
 
@@ -155,5 +155,9 @@ class ProductsController < ApplicationController
 
     def set_current_user_js
       gon.current_user = current_user
+    end
+
+    def set_search
+      @search = Product.search(params[:search])
     end
 end

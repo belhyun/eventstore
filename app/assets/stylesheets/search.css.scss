@@ -1,0 +1,22 @@
+#contents{
+  #search{
+    .navbar-form{
+      width:198px;
+      margin: 0 auto 20px;
+    }
+    .form-group{
+      float:left;
+      input{
+        width:80%;
+      }
+    }
+    .glyphicon-search{
+      img{
+        display:block;
+        padding:5px;
+        margin-top:7px;
+        background-color:#99d4f1;
+      }
+    }
+  }
+}

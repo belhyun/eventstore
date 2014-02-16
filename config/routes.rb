@@ -27,7 +27,7 @@ Eventmoayo::Application.routes.draw do
   resources :products do
     collection do
       get 'recommend'
-      get 'search'
+      post 'search'
       get 'rank'
       get 'urgent'
       get 'story'
