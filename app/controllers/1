@@ -14,7 +14,7 @@ class ProductsController < ApplicationController
   end
 
   def search
-    @search = Product.search(params)
+    @search = Article.search(params[:search])
     render :action => "search", :layout => nil
   end
 
