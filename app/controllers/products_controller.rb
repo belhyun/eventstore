@@ -1,8 +1,8 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :set_user
-  before_action :set_popular_product, only: [:story, :rank, :urgent, :recent]
-  before_action :set_categories, only: [:story, :rank, :urgent, :recent]
+  before_action :set_popular_product, only: [:story, :rank, :urgent, :recent, :search]
+  before_action :set_categories, only: [:story, :rank, :urgent, :recent, :search]
   before_action :set_type, only: [:story, :rank, :urgent, :recent]
   before_action :set_current_user_js, only: [:show]
   layout "product_show" , :only => :show
@@ -14,8 +14,11 @@ class ProductsController < ApplicationController
   end
 
   def search
-    @search = Product.search(params)
-    render :action => "search", :layout => nil
+    @search = Product.search(params).result
+    respond_to do |format|
+      format.html 
+      format.json { render json: @search.result.to_json}
+    end
   end
 
   def story
