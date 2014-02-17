@@ -20,8 +20,7 @@
     <% render partial: "layouts/visual" %>
     <% render partial: "layouts/categories" %>
     <%= render partial: "layouts/search", :locals => {search: @search} %>
-    <%= render partial: "layouts/product_type"%>
-    <% yield %>
+    <%= yield %>
   </div>
   <% render partial: "layouts/footer" %>
 </body>

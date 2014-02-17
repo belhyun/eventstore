@@ -1,5 +1,5 @@
 <div class="btn-group event-selector">
-  <%if @type.nil? || @type == 'story' %>
+<%if @type == 'story' %>
   <%=link_to "이벤트 스토리" , root_path , class:"btn active"%>
   <%=link_to "쿠폰&할인" , coupons_path , class:"btn"%>
   <%=link_to "마감 임박순" , urgent_products_path , class:"btn"%>
@@ -9,7 +9,6 @@
   <%=link_to "쿠폰&할인" , coupons_path , class:"btn active"%>
   <%=link_to "마감 임박순" , urgent_products_path , class:"btn"%>
   <%=link_to "최신 이벤트" , recent_products_path , class:"btn"%>
-
 <%elsif @type == 'urgent'%>
   <%=link_to "이벤트 스토리" , root_path, class:"btn"%>
   <%=link_to "쿠폰&할인" , coupons_path , class:"btn"%>

@@ -14,10 +14,11 @@ class ProductsController < ApplicationController
   end
 
   def search
-    @search = Product.search(params).result
+    @search = Product.search(params[:search]).result
+    @search = Kaminari.paginate_array(@search).page(params[:page]).per(10)
     respond_to do |format|
       format.html 
-      format.json { render json: @search.result.to_json}
+      format.json { render json: @search.to_json}
     end
   end
 

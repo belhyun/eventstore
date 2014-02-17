@@ -1,1 +1,10 @@
-search html
+<div class="column-container">
+  <div class="content full-width">
+    <ul class="events_list">
+      <%@search.each_with_index do |product,index| %>
+        <%= render partial: "events_list", :locals => {:product => product, :index => index} %>
+    <% end %>
+    </ul>
+    <%= render partial: "more_load" %>
+  </div>
+</div>
