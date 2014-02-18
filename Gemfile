@@ -46,14 +46,15 @@ gem 'less-rails'
 gem 'whenever'
 gem 'bootstrap-select-rails', '~> 1.3.0.1'
 gem 'kaminari'
-gem 'mime-types'
+#gem 'mime-types'
 gem 'netrc'
 gem 'rdoc'
 gem 'rest-client'
 gem 'omniauth-facebook'
 gem 'geocoder'
 gem 'protected_attributes'
-gem 'paperclip'
+gem "paperclip", "~> 3.5.3"
+#gem 'paperclip'
 gem "redis", "~> 3.0.1"
 gem 'rollout'
 gem 'sidekiq'
@@ -78,3 +79,4 @@ group :test do
   gem "guard-rspec"
   gem "guard-livereload"
 end
+#gem "meta_search"

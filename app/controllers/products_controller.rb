@@ -14,7 +14,7 @@ class ProductsController < ApplicationController
   end
 
   def search
-    @search = Product.search(params[:search]).result
+    @search = Product.select_with_expire_days.search(params[:search]).result
     @search = Kaminari.paginate_array(@search).page(params[:page]).per(10)
     gon.total_cnt = @search.count
     gon.query = params[:search][:title_or_gift_or_description_contains];
