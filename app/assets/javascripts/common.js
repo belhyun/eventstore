@@ -8,6 +8,8 @@
     this.page = 2;
     this.url = argument['url'];
     this.per_page = argument['per_page'];
+    this.type = argument['type'],
+    this.query = argument['query']
   };
 
   $_.page_loader.prototype.is_end = function(){
@@ -23,8 +25,10 @@
     var that = this, template, data, target, html;
     if($_.page_loader.prototype.is_end.call(this)) return;
     $.ajax({
+      type: _.isUndefined(this.type)?'GET':this.type,
       url: this.url+"?page="+this.page,
       async: false,
+      data: {search:{title_or_gift_or_description_contains:this.query}},
       success: function(items){
         template = _.template(
           "<li>"+

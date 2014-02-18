@@ -16,6 +16,8 @@ class ProductsController < ApplicationController
   def search
     @search = Product.search(params[:search]).result
     @search = Kaminari.paginate_array(@search).page(params[:page]).per(10)
+    gon.total_cnt = @search.count
+    gon.query = params[:search][:title_or_gift_or_description_contains];
     respond_to do |format|
       format.html 
       format.json { render json: @search.to_json}
