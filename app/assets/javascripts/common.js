@@ -42,7 +42,7 @@
           "<div class='publisher'><%=publisher%></div>"+
           "<a href='/products/<%=id%>'>"+
           "<span class='title'><%=title%></span>"+
-          "</a>    경품: <span class='gift'><%=gift%></span>"+
+          "</a><span class='gift'><%=gift%></span>"+
           "</div>"+
           "</div>"+
           "</li>");
@@ -59,12 +59,8 @@
             data.hits = target.hits;
             data.publisher = target.publisher;
             data.id = target.id;
-            if(target.gift != null){
-            }else{
-              target.gift = "경품정보 없음";
-            }
             data.title = target.title;
-            data.gift = target.gift;
+            data.gift = target.gift.replace(/\n/g,"<br/>");
             if(target.expire_days == '0'){
               data.expire_days = 'day';
             }else{
@@ -127,7 +123,7 @@
               }else{
                 productData.image = "http://eventstore.co.kr/assets/noimage_small_bg.jpg";
               }
-              productData.gift = products[j].gift;
+              productData.gift = products[j].gift.replace(/\n/g, '<br />');
               productData.link = "http://eventstore.co.kr/products/"+products[j].id;
               productData.endDate = products[j].end_date;
               productHtml += productsTemplate(productData);
