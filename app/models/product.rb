@@ -69,7 +69,8 @@ class Product < ActiveRecord::Base
     products = products.sort_by do |element|
       rankProducts.index(element.id.to_s)
     end
-    products.reverse   
+    products.reverse
+    #Product.where(:id => products.reverse.map(&:id))
   end
 
   def self.addScoreToProduct(id, score)
