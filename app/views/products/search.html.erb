@@ -1,12 +1,10 @@
-<%= render partial: "layouts/product_type"%>
-<div class="column-container">
-  <div class="content">
+<div class="column-container top-none">
+  <div class="content full-width">
     <ul class="events_list">
-      <%@products.each_with_index do |product,index| %>
+      <%@search.each_with_index do |product,index| %>
         <%= render partial: "events_list", :locals => {:product => product, :index => index} %>
     <% end %>
     </ul>
     <%= render partial: "more_load" %>
   </div>
-  <%= render partial: "aside" %>
 </div>

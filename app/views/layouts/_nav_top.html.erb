@@ -24,6 +24,13 @@
             </li>
           <%end%>
         </ul>
+        <%if mobile_device? %>
+        <div class="btn-android">
+          <%=link_to "https://play.google.com/store/apps/details?id=belhyun.eventstore" do %>
+            <%=image_tag "btn_android.png"%>
+          <%end%>
+        </div>
+        <%end%>
       </div>
     </div>
   </div>

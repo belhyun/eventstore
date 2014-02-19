@@ -1,8 +1,8 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :set_user
-  before_action :set_popular_product, only: [:story, :rank, :urgent, :recent]
-  before_action :set_categories, only: [:story, :rank, :urgent, :recent]
+  before_action :set_popular_product, only: [:story, :rank, :urgent, :recent, :search]
+  before_action :set_categories, only: [:story, :rank, :urgent, :recent, :search]
   before_action :set_type, only: [:story, :rank, :urgent, :recent]
   before_action :set_current_user_js, only: [:show]
   layout "product_show" , :only => :show
@@ -14,7 +14,14 @@ class ProductsController < ApplicationController
   end
 
   def search
-    Product.search("facebook")
+    @search = Product.select_with_expire_days.order("hits desc").search(params[:search]).result
+    @search = Kaminari.paginate_array(@search).page(params[:page]).per(10)
+    gon.total_cnt = @search.count
+    gon.query = params[:search][:title_or_gift_or_description_contains];
+    respond_to do |format|
+      format.html 
+      format.json { render json: @search.to_json}
+    end
   end
 
   def story

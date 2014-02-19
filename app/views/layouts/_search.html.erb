@@ -1,0 +1,12 @@
+<div id="search">
+  <%=form_tag search_products_path,:method=>"post",:class=>"navbar-form navbar-left",:role=>"search" do%>
+    <div class="form-group">
+      <%= text_field_tag 'search[title_or_gift_or_description_contains]', nil, placeholder: '검색' %>
+    <span class="glyphicon glyphicon-search">
+      <%= link_to "#none" do %>
+        <%= image_tag "search.png" %>
+      <%end%>
+    </span>
+    </div>
+  <%end%>
+</div>

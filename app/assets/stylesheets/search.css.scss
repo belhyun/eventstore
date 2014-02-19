@@ -1,0 +1,35 @@
+#contents{
+  #search{
+    overflow:hidden;
+    .navbar-form{
+      width:100%;
+      margin-bottom:20px;
+    }
+    .form-group{
+      width:100%;
+      input{
+        width:94.5%;
+      }
+    }
+    .glyphicon-search{
+      display:inline-block;
+      img{
+        padding:5px;
+        margin-top:7px;
+        background-color:#99d4f1;
+      }
+    }
+  }
+}
+@media screen and (max-width: 480px) {
+  #contents{
+    #search{
+      overflow:hidden;
+      .form-group{
+        input{
+          width:81.5%;
+        }
+      }
+    }
+  }
+}
