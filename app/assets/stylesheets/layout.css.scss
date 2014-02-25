@@ -13,8 +13,12 @@ body {
 }
 
 #nbpmobilead_div {
-  height: 50px;
-  margin-bottom:20px;
+  position:fixed;
+  z-index:9999;
+  bottom:0px;
+  //width:100%;
+  //height: 50px;
+  //margin-bottom:20px;
 }
 
 .container {
