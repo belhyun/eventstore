@@ -1,7 +1,65 @@
 body {
   font-family: "맑은고딕", "Malgun Gothic", "나눔고딕","NanumGothic","NanumGothicOTF", "돋움", "dotum", "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-color:#deeef6;
+  #banner{
+    background-color:#fff0f5;
+    padding:10px;
+    margin-bottom:20px;
+    overflow:hidden;
+    #container{
+      margin:0 auto;
+      width:82%;
+      h3{
+        float:left;
+        span.made{
+          color: #2fb6bc;
+        }
+        span.desc{
+          color: #fa2020;
+          font-style:italic;
+        }
+      }
+      img{
+        height:60px;
+      }
+      .logo{
+        //float:right;
+      }
+    }
+  }
 }
+
+@media screen and (max-width: 480px) {
+  body{
+    #banner{
+      background-color:#fff0f5;
+      padding:5px;
+      margin-bottom:20px;
+      overflow:hidden;
+      #container{
+        width:100%;
+        h3{
+          //float:left;
+          font-size:16px;
+          span.made{
+            color: #2fb6bc;
+          }
+          span.desc{
+            color: #fa2020;
+            font-style:italic;
+          }
+        }
+        img{
+        }
+        .logo{
+          float:none;
+          height:30px;
+        }
+      }
+    }
+  }
+}
+
 
 .btn {
   text-shadow: none;

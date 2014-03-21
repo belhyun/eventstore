@@ -9,7 +9,8 @@
     this.url = argument['url'];
     this.per_page = argument['per_page'];
     this.type = argument['type'],
-    this.query = argument['query']
+    this.query = argument['query'],
+    this.kind = argument['kind']
   };
 
   $_.page_loader.prototype.is_end = function(){
@@ -55,7 +56,11 @@
           target = items[i-1];
           if(target != null){
             if(target.image_file_size != null){
-              data.image = "http://eventstore.co.kr/images/products/"+target.id+"/"+target.id+"_medium.jpg";
+              if(that.kind == 'coupon'){
+                data.image = "http://eventstore.co.kr/images/coupons/"+target.id+"/"+target.id+"_medium.jpg";
+              }else{
+                data.image = "http://eventstore.co.kr/images/products/"+target.id+"/"+target.id+"_medium.jpg";
+              }
             }else{
               data.image = "http://eventstore.co.kr/assets/noimage_small_bg.jpg";
             }
@@ -92,7 +97,9 @@
           "<div class='info'>"+
           "<a href='<%=link%>'>"+
           "<span class='title'><%=title%></span>"+
-          "</a><span class='publisher'>주최: <%=publisher%></span>"+
+          "</a>"+
+          "<span class='hits'>조회 수: <%=hits%></span>"+
+          "<span class='publisher'>주최: <%=publisher%></span>"+
           "<span class='gift'><%=gift%></span>"+
           "<span class='end_date'>종료일자: <%=endDate%></span>"+
           "</div>"+
@@ -130,6 +137,7 @@
               productData.gift = products[j].gift.replace(/\n/g, '<br />');
               productData.link = "http://eventstore.co.kr/products/"+products[j].id;
               productData.endDate = products[j].end_date;
+              productData.hits = products[j].hits;
               productHtml += productsTemplate(productData);
             }
             productHtml += "</ul>";

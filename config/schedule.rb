@@ -9,7 +9,7 @@
 #
 set :output, "/home/www/rails_app/eventmoayo/log/cron_log.log"
 set :environment, 'production'
-every 6.hours do
+every 1.hours do
 #   command "/usr/bin/some_great_command"
 #   runner "MyModel.some_method"
   #

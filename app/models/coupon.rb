@@ -13,6 +13,14 @@ class Coupon < ActiveRecord::Base
     !self.image_url.blank? 
   end
 
+  def self.removeExpireCoupons
+    Coupon.where("end_date < CURDATE()").each do  |coupon|
+      coupon.delete
+      $redis.zrem(Rails.application.config.rank_key, coupon.id)
+      system("rm -rf #{File.absolute_path(Rails.root)}/public/images/coupons/#{coupon.id}")
+    end
+  end
+
   def download_remote_image
     self.image = do_download_remote_image
     #self.image_remote_url = image_url

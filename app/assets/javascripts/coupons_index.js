@@ -1,7 +1,8 @@
 (function($_){
   var loader = new $_.page_loader({
     per_page: 10,
-    url: "/coupons.json"
+    url: "/coupons.json",
+    kind: "coupon"
   });
   $(document).on('click','.more_load', function(e){
     e.preventDefault();

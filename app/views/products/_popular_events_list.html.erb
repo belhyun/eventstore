@@ -26,6 +26,7 @@
         <%= link_to(product) do %>
           <span class="title"><%=product.title%></span>
         <% end %>
+        <span class="hits">조회 수: <%=product.hits%></span>
         <span class="publisher">주최: <%=product.publisher%></span>
         <span class="gift">상품:<br/> <%=product.gift.to_s.gsub(/\r\n/,"<br/>").html_safe%></span>
         <span class="end_date">종료일자: <%=product.end_date%></span>

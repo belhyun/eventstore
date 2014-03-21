@@ -19,8 +19,11 @@
   <div id="contents" class="container">
     <% render partial: "layouts/visual" %>
     <% render partial: "layouts/categories" %>
-    <% render partial: "layouts/search", :locals => {search: @search} %>
-    <% yield %>
+    <% if !mobile_device? %>
+    <%= render partial: "layouts/banner" %>
+    <% end %>
+    <%= render partial: "layouts/search", :locals => {search: @search} %>
+    <%= yield %>
   </div>
   <% render partial: "layouts/footer" %>
 </body>

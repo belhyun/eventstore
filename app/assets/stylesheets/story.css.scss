@@ -1,0 +1,132 @@
+.content .popular_events_list {
+  display: inline-block;
+  width: 100%;
+  ul {
+    list-style: none;
+  }
+  > ul > li {
+    width: 100%;
+    &:nth-child(n+2) {
+      //margin-top: 15px;
+    }
+  }
+  .products_title {
+    border: 1px solid #dddde1;
+    border-bottom: none;
+    margin-bottom: 0;
+    margin-top: 0;
+    overflow: hidden;
+    background-color: #f9f9f9;
+    height: 100%;
+    .text {
+      float: left;
+      margin-left: 10px;
+      width: 75%;
+      h4 a {
+        color: #fa2020;
+      }
+      h5 a {
+        color: #575757;
+      }
+    }
+    .counts {
+      position: relative;
+      float: right;
+      display: block;
+      text-align: center;
+      margin: 3px 0 3px 5px;
+      width: 80px;
+      height: 58px;
+      background-image: url("count_bg.png");
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    .view_counts {
+      display: block;
+      margin: 8px 0 0 0;
+    }
+    .view_text {
+      margin-top: 2px;
+      font-size: 15px;
+      color: #636363;
+    }
+    .view_counts {
+      font-size: 15px;
+      margin-bottom: 5px;
+      color: #e36666;
+    }
+  }
+  .events {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border: 1px solid #dddde1;
+    display: none;
+    background-color: #ffffff;
+    li {
+      span {
+        display: block;
+        padding: 3px;
+      }
+      border-bottom: 1px solid #dddde1;
+      overflow: hidden;
+      img {
+        float: left;
+        width: 110px;
+        height: 110px;
+        border: 1px solid #999999;
+        margin: 5px;
+      }
+      .info {
+        margin-left: 120px;
+        span.title {
+          line-height: 21px;
+          font-weight: bold;
+          whithe-space: nowrap;
+          font-size: 18px;
+        }
+        span.hits{
+          color:#fa2020;
+          font-weight:bold;
+          font-size:16px;
+        }
+      }
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+    .goods_image! {}
+  }
+}
+@media screen and (max-width: 480px) {
+  .content .popular_events_list {
+    .products_title {
+      width: 100%;
+      height: auto;
+    }
+    .events {
+      //width:310px;
+      width: 100%;
+    }
+    > ul > li {
+      &:nth-child(even) {
+        clear: both;
+        float: left;
+        width: 100%;
+      }
+      &:nth-child(odd) {
+        width: 100%;
+      }
+    }
+    .products_title {
+      .text {
+        width: 70%;
+      }
+      .counts {
+        margin-top: 2%;
+        //width:20%;
+
+      }
+    }
+  }
+}

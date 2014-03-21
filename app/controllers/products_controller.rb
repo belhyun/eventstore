@@ -70,6 +70,7 @@ class ProductsController < ApplicationController
     Product.updateHits(params[:id])
     @zzimCnt = UserProduct.get_zzim_cnt(params[:id])
     @userProduct = UserProduct.where(:user_id => current_user.id, :product_id => params[:id]).first unless current_user.nil?
+    Product.addScoreToProduct(params[:id],1000)
     gon.userProduct = @userProduct 
     gon.product = Product.find(params[:id])
   end
