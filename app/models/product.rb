@@ -26,14 +26,15 @@ class Product < ActiveRecord::Base
   def score=(score)
     @total = 0
     score.scan(/\d+\(\d+\)/).each do |score|
-      /(\d+)\((\d)\)/.match(score){|m|
+      /(\d+)\((\d+)\)/.match(score){|m|
         @total += m[1].to_i * m[2].to_i
       }
     end
   end
 
   def score
-    @total ||= $redis.zscore(Rails.application.config.rank_key, id)
+    #@total ||= $redis.zscore(Rails.application.config.rank_key, id)
+    @total
   end
 
   def self.products

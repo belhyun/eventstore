@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user
   before_action :js_load
+  before_action :change_view_path
 
   private
   def current_user
@@ -13,6 +14,13 @@ class ApplicationController < ActionController::Base
   def mobile_device?
     request.user_agent =~ /Mobile|webOS/
   end
+
+  def change_view_path 
+    if request.user_agent =~ /Mobile|webOS/ || params[:m] == 'y'
+      prepend_view_path "app/views/mobile"
+    end
+  end
+
   helper_method :mobile_device?
   def js_load
     @js_controller = controller_name
